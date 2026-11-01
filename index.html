@@ -286,10 +286,11 @@ body.locked{overflow:hidden}
 @media (max-width:440px){.menu-btn .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.menu-btn{padding:12px 11px}.nav .btn.sm{padding:10px 12px;letter-spacing:.14em;white-space:nowrap}.nav .logo{width:108px}}
 
 /* reviews carousel */
-.reviews{padding-block:100px 110px;overflow:hidden}
-.reviews .head{margin-bottom:48px}
+.reviews{padding-block:80px 84px;overflow:hidden}
+.reviews .head{margin-bottom:34px}
+.reviews .head h2{font-size:clamp(1.7rem,3.6vw,2.6rem)}
 .rating{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--soft);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
-.rating b{font-family:var(--display);font-weight:500;font-size:1.9rem;letter-spacing:0;color:var(--text);line-height:1}
+.rating b{font-family:var(--display);font-weight:500;font-size:1.6rem;letter-spacing:0;color:var(--text);line-height:1}
 .rating:hover span:last-child{color:var(--text)}
 .stars{display:inline-flex;gap:3px;color:var(--accent)}
 .stars svg{width:14px;height:14px;fill:currentColor}
@@ -298,19 +299,19 @@ body.locked{overflow:hidden}
 .rev-track::-webkit-scrollbar{display:none}
 .rev-track.drag{cursor:grabbing;scroll-snap-type:none}
 .rev-track.drag *{user-select:none}
-.rev{flex:0 0 min(380px,82vw);scroll-snap-align:start;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px 28px 26px;display:flex;flex-direction:column;gap:18px;transition:border-color .3s}
+.rev{flex:0 0 min(320px,80vw);scroll-snap-align:start;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 22px 20px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s}
 .rev:hover{border-color:rgba(140,166,204,.45)}
 .rev-track{align-items:flex-start}
-.rev blockquote{height:13.6em;overflow:hidden;margin:0;color:#d3dcea;font-size:.98rem;line-height:1.7;position:relative}
+.rev blockquote{height:10.4em;overflow:hidden;margin:0;color:#d3dcea;font-size:.9rem;line-height:1.6;position:relative}
 .rev blockquote p+p{margin-top:12px}
 .rev.clip blockquote{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
 .rev:not(.clip) .more{visibility:hidden}
 .rev.open blockquote{height:auto;-webkit-mask-image:none;mask-image:none}
 .rev .more{align-self:flex-start;background:none;border:0;padding:0 0 3px;margin-top:-6px;cursor:pointer;color:var(--accent);font:600 .64rem var(--body);letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid currentColor}
 .rev figcaption{display:grid;gap:4px;border-top:1px solid var(--line);padding-top:16px}
-.rev figcaption b{font-family:var(--display);font-weight:500;font-size:1.2rem;color:var(--text)}
+.rev figcaption b{font-family:var(--display);font-weight:500;font-size:1.08rem;color:var(--text)}
 .rev figcaption span{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
-.rev-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:34px;flex-wrap:wrap}
+.rev-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:26px;flex-wrap:wrap}
 .rev-arrows{display:flex;gap:10px}
 .arr{width:46px;height:46px;border-radius:50%;border:1px solid rgba(231,237,246,.35);background:transparent;color:var(--text);display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s,opacity .2s}
 .arr svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
@@ -320,8 +321,8 @@ body.locked{overflow:hidden}
 @media (max-width:600px){.rev-foot{justify-content:center}.rev-arrows{display:none}}
 
 /* trusted-by logo marquee */
-.trust{padding-block:10px 96px}
-.trust .eyebrow{display:flex;justify-content:center;margin:0 0 34px;color:var(--mute)}
+.trust{padding-block:40px 44px;border-bottom:1px solid var(--line)}
+.trust .eyebrow{display:flex;justify-content:center;margin:0 0 26px;color:var(--mute);font-size:.64rem}
 .marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .mq-track{display:flex;align-items:center;gap:72px;width:max-content;list-style:none;margin:0;padding:6px 0;animation:mq 42s linear infinite}
 .mq-track li{flex:none;display:flex;align-items:center}
@@ -394,9 +395,31 @@ body.locked{overflow:hidden}
       <span class="eyebrow c">By the numbers</span>
       <div class="grid4">
         <div class="stat rv"><b>$500M+</b><span>In real estate shot</span></div>
-        <div class="stat rv"><b>1,000+</b><span>Listings shot</span></div>
+        <div class="stat rv"><b>1,000+</b><span>Listings captured</span></div>
         <div class="stat rv"><b>250+</b><span>Agents served</span></div>
       </div>
+    </div>
+  </section>
+
+  <section class="trust" aria-label="Trusted by agents at top brokerages">
+    <div class="wrap"><p class="eyebrow c">Trusted by top brokerages</p></div>
+    <div class="marquee">
+      <ul class="mq-track">
+          <li><img src="/logos/century21-legacy.png" alt="Century 21 Legacy" style="height:38px" loading="lazy" decoding="async"></li>
+          <li><img src="/logos/exp-realty.png" alt="eXp Realty" style="height:46px" loading="lazy" decoding="async"></li>
+          <li><img src="/logos/keller-williams.png" alt="Keller Williams Realty" style="height:48px" loading="lazy" decoding="async"></li>
+          <li><img src="/logos/real-brokerage.svg" alt="Real Brokerage" style="height:40px" loading="lazy" decoding="async"></li>
+          <li><img src="/logos/kw-luxury.png" alt="Keller Williams Luxury" style="height:40px" loading="lazy" decoding="async"></li>
+          <li><img src="/logos/united-real-estate.png" alt="United Real Estate" style="height:34px" loading="lazy" decoding="async"></li>
+          <li><img src="/logos/realty-executives.png" alt="Realty Executives" style="height:46px" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="/logos/century21-legacy.png" alt="" style="height:38px" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="/logos/exp-realty.png" alt="" style="height:46px" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="/logos/keller-williams.png" alt="" style="height:48px" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="/logos/real-brokerage.svg" alt="" style="height:40px" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="/logos/kw-luxury.png" alt="" style="height:40px" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="/logos/united-real-estate.png" alt="" style="height:34px" loading="lazy" decoding="async"></li>
+          <li aria-hidden="true"><img src="/logos/realty-executives.png" alt="" style="height:46px" loading="lazy" decoding="async"></li>
+      </ul>
     </div>
   </section>
 
@@ -508,28 +531,6 @@ body.locked{overflow:hidden}
         <button type="button" class="arr" id="revNext" aria-label="Next reviews"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
       <a class="btn" href="https://maps.google.com/?cid=16231784421992026918" target="_blank" rel="noopener">Read all reviews on Google</a>
-    </div>
-  </section>
-
-  <section class="trust" aria-label="Trusted by agents at top brokerages">
-    <div class="wrap"><p class="eyebrow c">Trusted by top brokerages</p></div>
-    <div class="marquee">
-      <ul class="mq-track">
-          <li><img src="/logos/century21-legacy.png" alt="Century 21 Legacy" style="height:38px" loading="lazy" decoding="async"></li>
-          <li><img src="/logos/exp-realty.png" alt="eXp Realty" style="height:46px" loading="lazy" decoding="async"></li>
-          <li><img src="/logos/keller-williams.png" alt="Keller Williams Realty" style="height:48px" loading="lazy" decoding="async"></li>
-          <li><img src="/logos/real-brokerage.svg" alt="Real Brokerage" style="height:40px" loading="lazy" decoding="async"></li>
-          <li><img src="/logos/kw-luxury.png" alt="Keller Williams Luxury" style="height:40px" loading="lazy" decoding="async"></li>
-          <li><img src="/logos/united-real-estate.png" alt="United Real Estate" style="height:34px" loading="lazy" decoding="async"></li>
-          <li><img src="/logos/realty-executives.png" alt="Realty Executives" style="height:46px" loading="lazy" decoding="async"></li>
-          <li aria-hidden="true"><img src="/logos/century21-legacy.png" alt="" style="height:38px" loading="lazy" decoding="async"></li>
-          <li aria-hidden="true"><img src="/logos/exp-realty.png" alt="" style="height:46px" loading="lazy" decoding="async"></li>
-          <li aria-hidden="true"><img src="/logos/keller-williams.png" alt="" style="height:48px" loading="lazy" decoding="async"></li>
-          <li aria-hidden="true"><img src="/logos/real-brokerage.svg" alt="" style="height:40px" loading="lazy" decoding="async"></li>
-          <li aria-hidden="true"><img src="/logos/kw-luxury.png" alt="" style="height:40px" loading="lazy" decoding="async"></li>
-          <li aria-hidden="true"><img src="/logos/united-real-estate.png" alt="" style="height:34px" loading="lazy" decoding="async"></li>
-          <li aria-hidden="true"><img src="/logos/realty-executives.png" alt="" style="height:46px" loading="lazy" decoding="async"></li>
-      </ul>
     </div>
   </section>
 
