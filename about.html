@@ -342,6 +342,18 @@ body.locked{overflow:hidden}
 .fbase2 span+span::before{content:"·";margin:0 10px;color:var(--mute)}
 @media (max-width:820px){.foot2{flex-direction:column;align-items:center;text-align:center;gap:22px}.foot2 ul{justify-content:center;gap:14px 22px}.fbase2{justify-content:center;text-align:center}}
 @media (max-width:1099px){.nav .right .btn.sm{display:none}}
+
+/* rolling number counters */
+.odo{display:inline-flex;align-items:flex-end}
+.odo .d{position:relative;display:inline-block;overflow:hidden;height:1.08em;line-height:1.08;-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent)}
+.odo .d .sz{visibility:hidden}
+.odo .d .strip{position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;text-align:center;transition:transform 2.2s cubic-bezier(.16,1,.3,1);will-change:transform}
+.odo .d .strip span{display:block;height:1.08em;line-height:1.08}
+b[data-odo] span{display:inline-block;margin:0!important;padding:0;font:inherit;letter-spacing:inherit;text-transform:none;color:inherit}
+b[data-odo] .odo{display:inline-flex}
+b[data-odo] .d .strip{display:flex}
+b[data-odo] .d .strip span{display:block}
+@media (prefers-reduced-motion:reduce){.odo .d .strip{transition:none}}
 </style>
 </head>
 <body>
@@ -410,9 +422,9 @@ body.locked{overflow:hidden}
     <div class="wrap">
       <span class="eyebrow c">By the numbers</span>
       <div class="nums">
-        <div class="rv"><b>1,000+</b><span>Listings shot</span></div>
-        <div class="rv"><b>250+</b><span>Agents served</span></div>
-        <div class="rv"><b>5.0</b><span>Stars on Google</span></div>
+        <div class="rv"><b data-odo>1,000+</b><span>Listings shot</span></div>
+        <div class="rv"><b data-odo>250+</b><span>Agents served</span></div>
+        <div class="rv"><b data-odo>5.0</b><span>Stars on Google</span></div>
       </div>
     </div>
   </section>
@@ -457,6 +469,29 @@ body.locked{overflow:hidden}
   document.getElementById('menuClose').addEventListener('click',close);
   sheet.querySelectorAll('ul a').forEach(function(a){a.addEventListener('click',close)});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
+<script>
+(function(){
+  var els=[].slice.call(document.querySelectorAll('[data-odo]'));if(!els.length)return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  els.forEach(function(el){
+    var txt=el.textContent.trim();el.setAttribute('aria-label',txt);
+    var html='<span class="odo" aria-hidden="true">',pos=0,n=txt.replace(/\D/g,'').length;
+    txt.split('').forEach(function(ch){
+      if(/\d/.test(ch)){
+        var t=+ch,laps=2+Math.floor(pos/2),cells='';
+        for(var i=0;i<=laps*10+t;i++)cells+='<span>'+(i%10)+'</span>';
+        html+='<span class="d" data-to="'+(laps*10+t)+'" data-delay="'+(pos*90)+'"><span class="sz">'+ch+'</span><span class="strip">'+cells+'</span></span>';pos++;
+      }else html+='<span>'+ch+'</span>';
+    });
+    el.innerHTML=html+'</span>';
+  });
+  function roll(el){el.querySelectorAll('.d').forEach(function(d){var s=d.querySelector('.strip');
+    s.style.transitionDelay=d.getAttribute('data-delay')+'ms';s.style.transform='translateY(-'+(d.getAttribute('data-to')*1.08)+'em)';});}
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(roll);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){roll(e.target);io.unobserve(e.target)}})},{threshold:.6});
+  els.forEach(function(el){io.observe(el)});
 })();
 </script>
 </body>
