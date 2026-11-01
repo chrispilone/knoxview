@@ -325,6 +325,9 @@ body.locked{overflow:hidden}
 @media (max-width:820px){.foot2{flex-direction:column;align-items:center;text-align:center;gap:22px}.foot2 ul{justify-content:center;gap:14px 22px}.fbase2{justify-content:center;text-align:center}}
 
 /* checklist progress */
+.ck-head{text-align:center;max-width:980px;margin:0 auto 22px;display:grid;gap:8px;justify-items:center}
+.ck-head h2{font-size:clamp(1.6rem,3.4vw,2.3rem);text-transform:uppercase;letter-spacing:.1em}
+.ck-head p{color:var(--ink-soft);font-size:.95rem}
 .prog{position:sticky;top:var(--hdr,88px);z-index:15;max-width:980px;margin:0 auto 44px;background:#0b1628;border:1px solid rgba(140,166,204,.25);border-radius:14px;padding:14px 20px 16px;box-shadow:0 14px 30px -18px rgba(11,22,40,.6);transition:border-color .4s,box-shadow .4s}
 .prog-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:11px;min-height:24px}
 .prog-label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a9b6c9}
@@ -392,6 +395,10 @@ body.locked{overflow:hidden}
 
   <section class="sec band-light" id="checklist">
     <div class="wrap">
+      <div class="ck-head rv">
+        <h2>Check it off <em class="ac">as you go</em></h2>
+        <p>Three quick things per room. Your progress saves on this device.</p>
+      </div>
       <div class="prog" id="prog" role="status" aria-live="polite">
         <div class="prog-row">
           <span class="prog-label" id="progLabel"><b id="progCount">0</b> of <span id="progTotal">24</span> done</span>
@@ -402,40 +409,34 @@ body.locked{overflow:hidden}
       </div>
       <div class="ck-grid">
         <div class="rv"><h2>Whole home</h2><ul>
-          <li><label><input type="checkbox"><span>Clean floors, counters, windows and mirrors. Put away clutter and laundry.</span></label></li>
-          <li><label><input type="checkbox"><span>Turn on every light and lamp. Replace burned-out bulbs with matching tones.</span></label></li>
-          <li><label><input type="checkbox"><span>Turn off ceiling fans and TVs. Open curtains and set blinds the same way.</span></label></li>
-          <li><label><input type="checkbox"><span>Close closet doors, cabinets and drawers.</span></label></li>
-          <li><label><input type="checkbox"><span>Put away valuables and personal paperwork.</span></label></li>
-          <li><label><input type="checkbox"><span>Plan for pets to be out or secured, and confirm access to the home.</span></label></li>
+          <li><label><input type="checkbox"><span>Turn on every light, open the blinds and turn off fans and TVs.</span></label></li>
+          <li><label><input type="checkbox"><span>Clear away clutter, personal items and valuables.</span></label></li>
+          <li><label><input type="checkbox"><span>Have pets out or secured, and make sure we can get in.</span></label></li>
         </ul></div>
         <div class="rv"><h2>Kitchen &amp; dining</h2><ul>
-          <li><label><input type="checkbox"><span>Keep counters simple. Put away small appliances, food and extra decor.</span></label></li>
-          <li><label><input type="checkbox"><span>Empty the sink. Store dishes, soap, sponges and drying racks.</span></label></li>
-          <li><label><input type="checkbox"><span>Clear the fridge front and top. Hide trash cans and pet bowls.</span></label></li>
-          <li><label><input type="checkbox"><span>Wipe tables and appliances. Straighten chairs and remove mats and towels.</span></label></li>
+          <li><label><input type="checkbox"><span>Clear the counters, leaving just a few nice pieces.</span></label></li>
+          <li><label><input type="checkbox"><span>Empty the sink and put away towels, sponges and soap.</span></label></li>
+          <li><label><input type="checkbox"><span>Clear the front of the fridge and hide the trash can.</span></label></li>
         </ul></div>
         <div class="rv"><h2>Bathrooms</h2><ul>
-          <li><label><input type="checkbox"><span>Put away toiletries, toothbrushes and shower products.</span></label></li>
-          <li><label><input type="checkbox"><span>Polish mirrors, glass and fixtures. Close toilet lids.</span></label></li>
-          <li><label><input type="checkbox"><span>Hang fresh, matching towels. Store bath mats, trash cans, plungers and cleaning tools.</span></label></li>
+          <li><label><input type="checkbox"><span>Put away toiletries, razors and shower products.</span></label></li>
+          <li><label><input type="checkbox"><span>Hang fresh, matching towels and close the toilet lid.</span></label></li>
+          <li><label><input type="checkbox"><span>Hide the trash can, bath mats and cleaning supplies.</span></label></li>
         </ul></div>
         <div class="rv"><h2>Living areas</h2><ul>
-          <li><label><input type="checkbox"><span>Straighten furniture, pillows and rugs. Keep walkways and views clear.</span></label></li>
-          <li><label><input type="checkbox"><span>Clear coffee tables and shelves of remotes, chargers and personal items.</span></label></li>
+          <li><label><input type="checkbox"><span>Fluff the pillows and straighten furniture and rugs.</span></label></li>
+          <li><label><input type="checkbox"><span>Clear coffee tables of remotes, chargers and mail.</span></label></li>
           <li><label><input type="checkbox"><span>Put away pet beds, toys and loose cords.</span></label></li>
         </ul></div>
         <div class="rv"><h2>Bedrooms</h2><ul>
-          <li><label><input type="checkbox"><span>Make every bed and arrange pillows neatly.</span></label></li>
-          <li><label><input type="checkbox"><span>Clear nightstands, dressers and desks.</span></label></li>
-          <li><label><input type="checkbox"><span>Put away laundry, shoes, toys and charging cables.</span></label></li>
+          <li><label><input type="checkbox"><span>Make every bed.</span></label></li>
+          <li><label><input type="checkbox"><span>Clear off nightstands and dressers.</span></label></li>
+          <li><label><input type="checkbox"><span>Put away clothes, shoes and laundry baskets.</span></label></li>
         </ul></div>
         <div class="rv"><h2>Exterior</h2><ul>
-          <li><label><input type="checkbox"><span>Move cars out of the driveway and away from the front of the home.</span></label></li>
-          <li><label><input type="checkbox"><span>Hide trash bins, hoses, tools and toys. Close garage doors.</span></label></li>
-          <li><label><input type="checkbox"><span>Mow, tidy landscaping and sweep entries, porches and patios.</span></label></li>
-          <li><label><input type="checkbox"><span>Set out patio furniture and cushions. Uncover and tidy the pool or hot tub.</span></label></li>
-          <li><label><input type="checkbox"><span>Turn on porch and exterior lights, especially for twilight shoots.</span></label></li>
+          <li><label><input type="checkbox"><span>Move cars out of the driveway and away from the house.</span></label></li>
+          <li><label><input type="checkbox"><span>Put away trash bins, hoses and yard tools.</span></label></li>
+          <li><label><input type="checkbox"><span>Mow, sweep the porch and turn on outdoor lights.</span></label></li>
         </ul></div>
       </div>
       <p class="walk rv">Final walk-through: <em>if you wouldn't want it in your listing photos, put it away.</em></p>
@@ -489,7 +490,7 @@ body.locked{overflow:hidden}
   var boxes=[].slice.call(document.querySelectorAll('#checklist input[type=checkbox]'));
   var prog=document.getElementById('prog'),fill=document.getElementById('progFill'),cnt=document.getElementById('progCount');
   document.getElementById('progTotal').textContent=boxes.length;
-  var KEY='kv-prep-checklist-v1';
+  var KEY='kv-prep-checklist-v2';
   try{var saved=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){b.checked=saved.indexOf(i)>-1})}catch(e){}
   function hdr(){var h=document.getElementById('hdr');if(h)document.documentElement.style.setProperty('--hdr',(h.offsetHeight+10)+'px')}
   function update(save){
