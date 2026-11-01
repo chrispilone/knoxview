@@ -64,7 +64,7 @@ header.scrolled{background:rgba(11,22,40,.88);backdrop-filter:blur(10px);-webkit
 .nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
 .nav ul a{text-decoration:none;font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);transition:color .2s}
 .nav ul a:hover{color:var(--text)}
-@media (max-width:900px){.nav ul{display:none}}
+@media (max-width:1099px){.nav ul{display:none}}
 
 /* hero */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 30%,#16294a 0%,var(--night) 70%)}
@@ -266,10 +266,6 @@ footer{border-top:1px solid var(--line);background:#081120}
 .sheet ul a:hover{color:var(--accent)}
 .sheet .btn{margin-top:auto}
 body.locked{overflow:hidden}
-@media (min-width:1100px){
-  .rail{display:block}
-  main .wrap,footer .wrap{max-width:none;padding-left:max(200px,calc((100% - 1140px)/2));padding-right:max(48px,calc((100% - 1140px)/2))}
-}
 @media (max-width:1099px){.menu-btn{display:inline-flex}}
 .menu-btn .lbl{font-weight:600}
 @media (max-width:440px){.menu-btn .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.menu-btn{padding:12px 11px}.nav .btn.sm{padding:10px 12px;letter-spacing:.14em;white-space:nowrap}.nav .logo{width:108px}}
@@ -280,6 +276,13 @@ body.locked{overflow:hidden}
 <header id="hdr">
   <div class="wrap nav">
     <a href="/" aria-label="Knox View Real Estate Media home"><span class="logo"></span></a>
+    <ul class="top-links">
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/packages">Packages</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#how">How it works</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
     <div class="right">
       <a class="btn sm" href="https://book.knoxview.com" target="_blank" rel="noopener">Book a shoot</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-controls="sheet" aria-expanded="false"><span aria-hidden="true"><i></i><i></i></span><b class="lbl">Menu</b></button>
@@ -287,19 +290,6 @@ body.locked{overflow:hidden}
   </div>
 </header>
 
-<nav class="rail" id="rail" aria-label="Page sections">
-  <ul>
-    <li><a href="/" data-s="none">Home</a></li>
-    <li><a href="/#services" data-s="services">Services</a></li>
-    <li><a href="/#reels" data-s="reels">Reels</a></li>
-    <li><a href="/#work" data-s="work">Work</a></li>
-    <li><a href="#packages" data-s="packages">Packages</a></li>
-    <li><a href="/#agents" data-s="agents">Why us</a></li>
-    <li><a href="/#how" data-s="how">How it works</a></li>
-    <li><a href="/#area" data-s="area">Service area</a></li>
-    <li><a href="#contact" data-s="contact">Contact</a></li>
-  </ul>
-</nav>
 
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="top">
@@ -488,18 +478,6 @@ body.locked{overflow:hidden}
 
 <script>
 (function(){
-  var rail=document.getElementById('rail');
-  var links=[].slice.call(rail.querySelectorAll('a[data-s]'));
-  function update(){
-    var mid=window.innerHeight*0.45, cur=null;
-    links.forEach(function(a){var el=document.getElementById(a.getAttribute('data-s'));if(!el)return;var r=el.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid)cur=a;});
-    if(!cur&&window.scrollY<100)cur=links[0];
-    links.forEach(function(a){a.classList.toggle('on',a===cur)});
-    var probe=window.innerHeight/2, light=false;
-    document.querySelectorAll('.band-light').forEach(function(s){var r=s.getBoundingClientRect();if(r.top<=probe&&r.bottom>=probe)light=true});
-    rail.classList.toggle('light',light);
-  }
-  window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);update();
   var sheet=document.getElementById('sheet');
   function open(){sheet.classList.add('open');document.body.classList.add('locked');document.getElementById('menuBtn').setAttribute('aria-expanded','true')}
   function close(){sheet.classList.remove('open');document.body.classList.remove('locked');document.getElementById('menuBtn').setAttribute('aria-expanded','false')}
