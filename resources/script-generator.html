@@ -444,9 +444,9 @@ body.locked{overflow:hidden}
         <p class="step">1. The home</p>
         <div class="f"><label for="addr">Property address</label><input id="addr" name="addr" placeholder="123 Ridgeview Dr, Knoxville" autocomplete="off" required></div>
         <div class="row3">
-          <div class="f"><label for="beds">Beds</label><select id="beds" name="beds"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5+">5+</option></select></div>
-          <div class="f"><label for="baths">Baths</label><select id="baths" name="baths"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5+">5+</option></select></div>
-          <div class="f"><label for="sqft">Sq ft</label><select id="sqft" name="sqft"><option value="">Select</option><option value="Under 1,500">Under 1,500</option><option value="1,500–2,500">1,500–2,500</option><option value="2,500–3,500">2,500–3,500</option><option value="3,500–5,000">3,500–5,000</option><option value="5,000+">5,000+</option></select></div>
+          <div class="f"><label for="beds">Beds</label><select id="beds" name="beds"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+">4+</option><option value="Not applicable">Not applicable</option></select></div>
+          <div class="f"><label for="baths">Baths</label><select id="baths" name="baths"><option value="">Select</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4+">4+</option><option value="Not applicable">Not applicable</option></select></div>
+          <div class="f"><label for="sqft">Sq ft</label><select id="sqft" name="sqft"><option value="">Select</option><option value="Under 1,500">Under 1,500</option><option value="1,500–2,500">1,500–2,500</option><option value="2,500–3,500">2,500–3,500</option><option value="3,500–5,000">3,500–5,000</option><option value="5,000+">5,000+</option><option value="Not applicable">Not applicable</option></select></div>
         </div>
         <div class="f"><label for="feat">Top 3 features</label><textarea id="feat" name="feat" placeholder="Mountain views from the deck&#10;Renovated kitchen&#10;Hot tub"></textarea><small>One per line.</small></div>
         <div class="f"><label for="area">Neighborhood or nearby highlights</label><input id="area" name="area" placeholder="Minutes from downtown and the Greenway"></div>
@@ -456,7 +456,7 @@ body.locked{overflow:hidden}
           <div class="f"><label for="agent">Your name</label><input id="agent" name="agent" autocomplete="name" placeholder="Jordan Smith"></div>
           <div class="f"><label for="brok">Brokerage</label><input id="brok" name="brok" autocomplete="organization" placeholder="Realty Group"></div>
         </div>
-        <div class="f"><span class="lbl">Call to action</span><div class="chips2"><input type="radio" name="cta" id="cta0" value="Call or text me"><label for="cta0">Call or text me</label><input type="radio" name="cta" id="cta1" value="Book a showing" checked><label for="cta1">Book a showing</label><input type="radio" name="cta" id="cta2" value="Visit the website"><label for="cta2">Visit the website</label></div></div>
+        <input type="hidden" name="cta" value="Book a showing">
 
         <p class="err" id="formErr" role="alert"></p>
         <button class="btn fill" type="submit">Write my script</button>
@@ -557,7 +557,7 @@ body.locked{overflow:hidden}
     var addr=val('addr')||'this home',street=addr.split(',')[0];
     var feats=val('feat').split(/\n+/).map(function(s){return s.trim()}).filter(Boolean).slice(0,3);
     if(!feats.length)feats=['an open, light-filled layout','a kitchen made for gathering','space to relax outside'];
-    var nb=val('beds'),nba=val('baths'),sq=val('sqft');function cnt(n,w){return n===''?'':(n==='5+'?'5 or more '+w+'s':n+' '+w+(n==='1'?'':'s'))}var sqm={'Under 1,500':'under 1,500 square feet','1,500–2,500':'up to 2,500 square feet','2,500–3,500':'over 2,500 square feet','3,500–5,000':'over 3,500 square feet','5,000+':'over 5,000 square feet'};var bb=[cnt(nb,'bedroom'),cnt(nba,'bathroom'),sqm[sq]||''].filter(Boolean);
+    var nb=val('beds'),nba=val('baths'),sq=val('sqft');function cnt(n,w){return (n===''||n==='Not applicable')?'':(n==='4+'?'4 or more '+w+'s':n+' '+w+(n==='1'?'':'s'))}var sqm={'Under 1,500':'under 1,500 square feet','1,500–2,500':'up to 2,500 square feet','2,500–3,500':'over 2,500 square feet','3,500–5,000':'over 3,500 square feet','5,000+':'over 5,000 square feet'};var bb=[cnt(nb,'bedroom'),cnt(nba,'bathroom'),sqm[sq]||''].filter(Boolean);
     var name=val('agent'),brok=val('brok'),area=val('area');
     var hooks={Warm:['Come home to '+street+'.','Picture yourself living at '+street+'.','This one feels like home the moment you walk in.'],
       Luxury:['Welcome to '+street+'.','Some homes are simply a cut above. This is one of them.','Introducing '+street+'.'],
