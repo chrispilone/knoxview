@@ -284,6 +284,40 @@ body.locked{overflow:hidden}
 @media (max-width:1099px){.menu-btn{display:inline-flex}}
 .menu-btn .lbl{font-weight:600}
 @media (max-width:440px){.menu-btn .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.menu-btn{padding:12px 11px}.nav .btn.sm{padding:10px 12px;letter-spacing:.14em;white-space:nowrap}.nav .logo{width:108px}}
+
+/* reviews carousel */
+.reviews{padding-block:100px 110px;overflow:hidden}
+.reviews .head{margin-bottom:48px}
+.rating{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--soft);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.rating b{font-family:var(--display);font-weight:500;font-size:1.9rem;letter-spacing:0;color:var(--text);line-height:1}
+.rating:hover span:last-child{color:var(--text)}
+.stars{display:inline-flex;gap:3px;color:var(--accent)}
+.stars svg{width:14px;height:14px;fill:currentColor}
+.rev-track-wrap{position:relative}
+.rev-track{--pad:max(20px,calc((100vw - var(--maxw))/2 + 20px));display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);padding:6px var(--pad) 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab;outline:none}
+.rev-track::-webkit-scrollbar{display:none}
+.rev-track.drag{cursor:grabbing;scroll-snap-type:none}
+.rev-track.drag *{user-select:none}
+.rev{flex:0 0 min(380px,82vw);scroll-snap-align:start;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px 28px 26px;display:flex;flex-direction:column;gap:18px;transition:border-color .3s}
+.rev:hover{border-color:rgba(140,166,204,.45)}
+.rev-track{align-items:flex-start}
+.rev blockquote{height:13.6em;overflow:hidden;margin:0;color:#d3dcea;font-size:.98rem;line-height:1.7;position:relative}
+.rev blockquote p+p{margin-top:12px}
+.rev.clip blockquote{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+.rev:not(.clip) .more{visibility:hidden}
+.rev.open blockquote{height:auto;-webkit-mask-image:none;mask-image:none}
+.rev .more{align-self:flex-start;background:none;border:0;padding:0 0 3px;margin-top:-6px;cursor:pointer;color:var(--accent);font:600 .64rem var(--body);letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.rev figcaption{display:grid;gap:4px;border-top:1px solid var(--line);padding-top:16px}
+.rev figcaption b{font-family:var(--display);font-weight:500;font-size:1.2rem;color:var(--text)}
+.rev figcaption span{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.rev-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:34px;flex-wrap:wrap}
+.rev-arrows{display:flex;gap:10px}
+.arr{width:46px;height:46px;border-radius:50%;border:1px solid rgba(231,237,246,.35);background:transparent;color:var(--text);display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s,opacity .2s}
+.arr svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.arr:hover{background:rgba(255,255,255,.08);border-color:var(--text)}
+.arr:disabled{opacity:.3;cursor:default;background:transparent}
+.arr:focus-visible,.rev .more:focus-visible,.rev-track:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (max-width:600px){.rev-foot{justify-content:center}.rev-arrows{display:none}}
 </style>
 </head>
 <body>
@@ -355,6 +389,117 @@ body.locked{overflow:hidden}
         <div class="stat rv"><b>1,000+</b><span>Listings shot</span></div>
         <div class="stat rv"><b>250+</b><span>Agents served</span></div>
       </div>
+    </div>
+  </section>
+
+  <section class="sec reviews" id="reviews" aria-label="Client reviews">
+    <div class="wrap">
+      <div class="head rv">
+        <span class="eyebrow c">Client reviews</span>
+        <h2>What agents are <em class="ac">saying</em></h2>
+        <a class="rating" href="https://maps.google.com/?cid=16231784421992026918" target="_blank" rel="noopener"><b>5.0</b><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></span><span>15 Google reviews</span></a>
+      </div>
+    </div>
+    <div class="rev-track-wrap rv">
+      <div class="rev-track" id="revTrack" tabindex="0" aria-label="Reviews, scroll sideways for more">
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>I’ve had the pleasure of working with Chris at Knox View Media for my real estate listings, and I can’t recommend him highly enough. His professionalism, attention to detail, and creative eye consistently elevate every property he shoots.</p><p>The quality of both his photography and videography is outstanding—each listing looks polished, inviting, and truly stands out in a competitive market. Chris has a great ability to highlight the best features of a home while maintaining a natural, authentic feel.</p><p>Beyond the final product, he’s also incredibly reliable, easy to work with, and always delivers on time. If you’re looking for someone who takes pride in their craft and produces top-tier visual content, Knox Vote Media is an excellent choice.</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Rebekah Hamby</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>Chris and his team do an excellent job. He has been my photographer/videographer on multiple properties. He has never been late and has never under delivered. Pictures are high resolution and video is eye-catching. He has helped showcase my properties and I would highly recommend him.</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Robbie Porter</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>Chris is an absolute professional. Not only does he impress me as the person that hires him but nearly every client of mine that he meets raves about how helpful he was during the photo shoot. He’s one of the absolute best in the business! Easy to schedule, shows up on time and delivers timely!</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Lacy Mellon</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>I’ve used Chris for my real estate photography and every experience has been excellent. He is always prompt, professional, and right on time. Booking online is easy and communication from start to finish is exceptional and friendly.  I love the upfront pricing too so you know what you’re paying for with no surprises. His package choices are perfect!</p><p>I’m also always impressed by how quickly he delivers the finished media—it’s always much faster than expected without sacrificing quality. The entire process is smooth, stress-free, and the photos turn out professional and fantastic!</p><p>It’s hard to find someone who consistently provides great customer service, outstanding work, and such a quick turnaround. I highly recommend him and will absolutely continue using him for future projects</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>LeAnn Sink</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>KnoxView Media is absolutely top-tier, and Chris is a true stand-up guy. From start to finish, he makes the entire shooting process feel effortless and fun. He’s quick-witted, insanely talented, and has a way of making you feel completely comfortable on camera — which is not easy to do. Every project with him feels more like a creative collaboration than work. Honestly, Chris should be directing in Hollywood — his eye for detail and storytelling is next level. If you’re looking for high-quality media and an amazing experience, KnoxView Media is the only call you need to make. Highly recommended!</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Maria Checchin</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>If you’re looking for a photographer who truly understands real estate marketing, I highly recommend Chris Pilone with Knox View Media.</p><p>Chris does an outstanding job capturing homes in a way that really highlights their best features and helps listings stand out online. His attention to detail, professionalism, and quick turnaround make him a great partner for any agent looking to elevate their marketing.</p><p>He also went above and beyond at my Broker Open by providing professional headshots for agents attending. It was such a thoughtful touch and added tremendous value to the event. Everyone loved the experience, and the photos looked fantastic.</p><p>Thank you, Chris, for your great work, professionalism, and for helping make the event a success. I look forward to working together again soon!</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Tonia Mostella</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>Chris was extremely professional delivered the pictures at a timely manner! He had great angles with great lighting. Beautiful pictures!</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Jenny Nguyen</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>Working with Chris to creatively collaborate on my listing media has been nothing short of a pleasure. As a picky realtor, he appreciates my creative vision and always asks for feedback. He is detailed, never rushes through the project, and is always kind and genuine. He makes even the smallest project feel important. The photos are crisp and detailed, and he helps me sell my listings quickly. I highly recommend KnoxView Media</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Tiana Winter</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>I had the pleasure of working with Chris Pilone of Knox View Media on a real estate project and couldn’t be happier with the experience. Chris made the entire process feel effortless, gave clear direction, and created an environment where I felt completely comfortable on camera. His attention to detail and ability to guide without over-directing truly shows in the final product. The quality of both the photos and video exceeded expectations, and I would absolutely recommend Knox View Media to any real estate professional.</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Robyn Dempsey</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>Knox View Media (Chris) went above and beyond with his attention to detail. He took real estate photos for a listing of mine and the photos were realistic but artfully done. He made the home look amazing! The owners were impressed as well. He is friendly, showed up on time, and was respectful of the home. I&#x27;ve worked with many real estate photographers and I can confirm Chris is one of the best!</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Haley Humphries</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>As a realtor, I’ve worked with Chris multiple times, and I can’t recommend him highly enough. His photography and videography skills are exceptional, bringing out the best in every property I list. He is professional, punctual, and truly understands the importance of capturing a home’s unique features. Whether it’s high-end luxury homes or cozy family residences, Knox View Media delivers stunning visuals that help my listings stand out. If you’re looking for top-tier real estate media services, look no further!</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Barbara Aline</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>Great pictures and customer service! Highly recommend!</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Aaron Frazer</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>Professional / Prompt<br>absolutely amazing 👏 creative  work!<br>So pleased with the still  shots ,<br>Video and drone footage<br>Would give a 10 star if I could<br>Highly recommend **********</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Christie Sox</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>Super friendly, and amazing quality work!</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Rocky Top Veterinary Hospital</b><span>Google review</span></figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg></div>
+          <blockquote><p>Chris is awesome!!</p></blockquote>
+          <button type="button" class="more" aria-expanded="false">Read more</button>
+          <figcaption><b>Amera Sadakne</b><span>Google review</span></figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="wrap rev-foot">
+      <div class="rev-arrows">
+        <button type="button" class="arr" id="revPrev" aria-label="Previous reviews"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="arr" id="revNext" aria-label="Next reviews"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <a class="btn" href="https://maps.google.com/?cid=16231784421992026918" target="_blank" rel="noopener">Read all reviews on Google</a>
     </div>
   </section>
 
@@ -574,6 +719,26 @@ body.locked{overflow:hidden}
   document.getElementById('menuClose').addEventListener('click',close);
   sheet.querySelectorAll('ul a').forEach(function(a){a.addEventListener('click',close)});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
+
+<script>
+(function(){
+  var t=document.getElementById('revTrack');if(!t)return;
+  var prev=document.getElementById('revPrev'),next=document.getElementById('revNext');
+  function step(){var c=t.querySelector('.rev');return c?c.getBoundingClientRect().width+18:380}
+  function sync(){prev.disabled=t.scrollLeft<8;next.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-8}
+  prev.addEventListener('click',function(){t.scrollBy({left:-step(),behavior:'smooth'})});
+  next.addEventListener('click',function(){t.scrollBy({left:step(),behavior:'smooth'})});
+  t.addEventListener('scroll',sync,{passive:true});window.addEventListener('resize',sync);sync();
+  t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();next.click()}if(e.key==='ArrowLeft'){e.preventDefault();prev.click()}});
+  var down=false,sx=0,sl=0,moved=false;
+  t.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.target.closest('button'))return;down=true;moved=false;sx=e.clientX;sl=t.scrollLeft});
+  window.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>4){moved=true;t.classList.add('drag')}t.scrollLeft=sl-dx});
+  window.addEventListener('pointerup',function(){if(!down)return;down=false;t.classList.remove('drag');if(moved){var w=step();t.scrollTo({left:Math.round(t.scrollLeft/w)*w,behavior:'smooth'})}});
+  function clip(){t.querySelectorAll('.rev').forEach(function(c){if(c.classList.contains('open'))return;var q=c.querySelector('blockquote');c.classList.toggle('clip',q.scrollHeight>q.clientHeight+2)})}
+  clip();window.addEventListener('resize',clip);if(document.fonts)document.fonts.ready.then(clip);
+  t.querySelectorAll('.more').forEach(function(b){b.addEventListener('click',function(){var c=b.closest('.rev');var o=c.classList.toggle('open');b.textContent=o?'Show less':'Read more';b.setAttribute('aria-expanded',o)})});
 })();
 </script>
 </body>
