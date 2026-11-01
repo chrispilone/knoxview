@@ -82,6 +82,21 @@ header.scrolled{background:rgba(11,22,40,.88);backdrop-filter:blur(10px);-webkit
   .ridge .r2{animation:drift 30s ease-in-out infinite alternate-reverse}
 }
 @keyframes drift{to{transform:translateX(-30px)}}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:#0b1628 center/cover no-repeat}
+.hero-bg iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;transform:translate(-50%,-50%);border:0;pointer-events:none}
+.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,22,40,.72) 0%,rgba(11,22,40,.5) 40%,rgba(11,22,40,.62) 75%,#0b1628 100%)}
+.hero .lede{color:#d3dcea}
+.play{display:inline-flex;align-items:center;gap:12px;margin-top:4px;background:none;border:0;cursor:pointer;color:var(--text);font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;padding:6px}
+.play .pi{width:38px;height:38px;border-radius:50%;border:1px solid rgba(231,237,246,.7);position:relative;transition:background .25s}
+.play .pi::after{content:"";position:absolute;left:15px;top:12px;border-left:11px solid var(--text);border-top:7px solid transparent;border-bottom:7px solid transparent}
+.play:hover .pi{background:rgba(255,255,255,.14)}
+.play:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:999px}
+.film{border:0;padding:0;background:transparent;width:min(1100px,92vw);max-width:none;overflow:visible}
+.film::backdrop{background:rgba(5,10,20,.88)}
+.film .fr{position:relative;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
+.film iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.film .x{position:absolute;top:-46px;right:0;background:none;border:1px solid rgba(231,237,246,.5);color:var(--text);border-radius:8px;padding:8px 14px;font:600 .68rem var(--body);letter-spacing:.22em;text-transform:uppercase;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.hero-bg iframe{display:none}}
 .coords{position:absolute;left:0;right:0;bottom:22px;z-index:3;text-align:center;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--soft);font-weight:600}
 
 /* sections */
@@ -269,16 +284,15 @@ footer{border-top:1px solid var(--line);background:#081120}
         <a class="btn fill" href="https://book.knoxview.com" target="_blank" rel="noopener">Book my shoot</a>
         <a class="btn" href="#services">Browse services</a>
       </div>
+      <button type="button" class="play" id="playFilm"><span class="pi" aria-hidden="true"></span>Watch the film</button>
       <nav class="chips" aria-label="Services">
         <a href="#services">Photography</a><a href="#services">Drone</a><a href="#services">3D tours</a><a href="#reels">Reels</a><a href="#services">Twilight</a><a href="#services">Video</a><a href="#packages">Pricing</a>
       </nav>
     </div>
-    <svg class="ridge" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
-      <path class="r1" fill="#16263f" d="M-40 170 L80 120 L170 150 L290 80 L400 130 L520 70 L640 125 L760 60 L880 115 L1010 50 L1130 110 L1250 70 L1380 120 L1500 90 L1500 300 L-40 300Z"/>
-      <path class="r2" fill="#1d3150" d="M-40 210 L110 160 L230 195 L360 140 L480 185 L610 130 L740 180 L860 145 L990 190 L1120 135 L1260 185 L1380 150 L1500 175 L1500 300 L-40 300Z"/>
-      <path fill="#14243d" d="M-40 245 L140 205 L300 235 L450 195 L620 238 L780 200 L940 240 L1100 205 L1270 238 L1420 210 L1500 225 L1500 300 L-40 300Z"/>
-      <path fill="#0b1628" d="M-40 280 L200 250 L420 272 L640 248 L880 274 L1120 252 L1340 272 L1500 258 L1500 300 L-40 300Z"/>
-    </svg>
+    <div class="hero-bg" aria-hidden="true" style="background-image:url('https://i.vimeocdn.com/video/2199737942-0daa293931c48cf235a3df6dded308badff8e9d774ae22e6094dd04515f20396-d_1280x720?region=us')">
+      <iframe src="https://player.vimeo.com/video/1225904983?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;dnt=1" allow="autoplay; fullscreen; picture-in-picture" tabindex="-1" title="Knox View cinematic reel (background)"></iframe>
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
     <span class="coords">Knoxville · Sevier County · East Tennessee</span>
   </section>
 
@@ -488,6 +502,24 @@ footer{border-top:1px solid var(--line);background:#081120}
   <div class="wrap fbase">© 2026 Knox View Real Estate Media · knoxview.com</div>
 </footer>
 
+<dialog class="film" id="film" aria-label="Knox View cinematic video">
+  <button type="button" class="x" id="closeFilm">Close</button>
+  <div class="fr"></div>
+</dialog>
+
+<script>
+(function(){
+  var d=document.getElementById('film'),fr=d.querySelector('.fr');
+  function close(){d.close()}
+  document.getElementById('playFilm').addEventListener('click',function(){
+    fr.innerHTML='<iframe src="https://player.vimeo.com/video/1225904983?autoplay=1&dnt=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Knox View cinematic video"></iframe>';
+    if(d.showModal)d.showModal();else d.setAttribute('open','');
+  });
+  document.getElementById('closeFilm').addEventListener('click',close);
+  d.addEventListener('click',function(e){if(e.target===d)close()});
+  d.addEventListener('close',function(){fr.innerHTML=''});
+})();
+</script>
 <script>
 (function(){
   var h=document.getElementById('hdr');
