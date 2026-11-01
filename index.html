@@ -240,6 +240,12 @@ footer{border-top:1px solid var(--line);background:#081120}
 .card.pop{border-color:var(--slate);box-shadow:0 0 0 1px var(--slate),0 12px 32px -18px rgba(15,35,71,.35)}
 .card .nm+.sub{margin-top:6px}
 .card{position:relative}.card .flag{position:absolute;top:14px;left:0;right:0;margin:0}.card .nm{padding-top:38px}
+.card .ex{display:block;text-align:center;margin:-14px 28px 22px;font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--slate);text-decoration:none}
+.card .ex span{border-bottom:1px solid var(--haze2);padding-bottom:2px;transition:border-color .2s,color .2s}
+.card .ex:hover span{color:var(--ink);border-color:var(--ink)}
+.card.top .ex{color:var(--accent)}
+.card.top .ex span{border-color:rgba(140,166,204,.4)}
+.card.top .ex:hover span{color:#fff;border-color:#fff}
 .pk-more{text-align:center;margin-top:44px;color:var(--ink-soft);font-size:.95rem}
 
 
@@ -623,6 +629,7 @@ body.locked{overflow:hidden}
             <li>Marketing kit</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Base</a>
+          <a class="ex" href="#" data-example="base"><span>View example</span></a>
         </article>
         <article class="card pop rv">
           <h3 class="nm">PRO</h3>
@@ -639,6 +646,7 @@ body.locked{overflow:hidden}
             <li>Marketing kit</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Pro</a>
+          <a class="ex" href="#" data-example="pro"><span>View example</span></a>
         </article>
         <article class="card top rv">
           <h3 class="nm">PREMIUM</h3>
@@ -656,6 +664,7 @@ body.locked{overflow:hidden}
             <li>Marketing kit</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Premium</a>
+          <a class="ex" href="#" data-example="premium"><span>View example</span></a>
         </article>
       </div>
       <p class="pk-more rv"><a class="btn" href="/packages">See all packages &amp; pricing</a></p>
@@ -793,5 +802,6 @@ body.locked{overflow:hidden}
   t.querySelectorAll('.more').forEach(function(b){b.addEventListener('click',function(){var c=b.closest('.rev');var o=c.classList.toggle('open');b.textContent=o?'Show less':'Read more';b.setAttribute('aria-expanded',o)})});
 })();
 </script>
+<script>document.querySelectorAll('.card .ex[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault()})});</script>
 </body>
 </html>

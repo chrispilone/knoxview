@@ -225,6 +225,12 @@ footer{border-top:1px solid var(--line);background:#081120}
 .card.pop{border-color:var(--slate);box-shadow:0 0 0 1px var(--slate),0 12px 32px -18px rgba(15,35,71,.35)}
 .card .nm+.sub{margin-top:6px}
 .card{position:relative}.card .flag{position:absolute;top:14px;left:0;right:0;margin:0}.card .nm{padding-top:38px}
+.card .ex{display:block;text-align:center;margin:-14px 28px 22px;font-size:.62rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--slate);text-decoration:none}
+.card .ex span{border-bottom:1px solid var(--haze2);padding-bottom:2px;transition:border-color .2s,color .2s}
+.card .ex:hover span{color:var(--ink);border-color:var(--ink)}
+.card.top .ex{color:var(--accent)}
+.card.top .ex span{border-color:rgba(140,166,204,.4)}
+.card.top .ex:hover span{color:#fff;border-color:#fff}
 .pk-more{text-align:center;margin-top:36px;color:var(--ink-soft);font-size:.95rem}
 .pk-more a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--rule);padding-bottom:2px;margin-left:6px}
 .pk-more a:hover{border-color:var(--ink)}
@@ -348,6 +354,7 @@ body.locked{overflow:hidden}
             <li>Marketing kit</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Base</a>
+          <a class="ex" href="#" data-example="base"><span>View example</span></a>
         </article>
         <article class="card pop rv">
           <h3 class="nm">PRO</h3>
@@ -364,6 +371,7 @@ body.locked{overflow:hidden}
             <li>Marketing kit</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Pro</a>
+          <a class="ex" href="#" data-example="pro"><span>View example</span></a>
         </article>
         <article class="card top rv">
           <h3 class="nm">PREMIUM</h3>
@@ -381,6 +389,7 @@ body.locked{overflow:hidden}
             <li>Marketing kit</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Premium</a>
+          <a class="ex" href="#" data-example="premium"><span>View example</span></a>
         </article>
       </div>
 
@@ -403,6 +412,7 @@ body.locked{overflow:hidden}
             <li>Marketing kit</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Zillow Showcase</a>
+          <a class="ex" href="#" data-example="zillow-showcase"><span>View example</span></a>
         </article>
         <article class="card top lux rv">
           <h3 class="nm">LUXURY</h3>
@@ -422,6 +432,7 @@ body.locked{overflow:hidden}
             <li>Priority delivery</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Luxury</a>
+          <a class="ex" href="#" data-example="luxury"><span>View example</span></a>
         </article>
       </div>
 
@@ -495,5 +506,6 @@ body.locked{overflow:hidden}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
 })();
 </script>
+<script>document.querySelectorAll('.card .ex[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault()})});</script>
 </body>
 </html>
