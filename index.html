@@ -93,11 +93,11 @@ header.scrolled{background:rgba(11,22,40,.88);backdrop-filter:blur(10px);-webkit
 
 /* stats band */
 .stats{background:linear-gradient(180deg,#0f1f3a,#0b1628);border-block:1px solid var(--line);padding-block:64px}
-.stats .grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;text-align:center}
+.stats .grid4{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;text-align:center;max-width:900px;margin:0 auto}
 .stat b{display:block;font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1;color:var(--text)}
 .stat span{display:block;margin-top:12px;font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
 .stats .eyebrow{display:flex;justify-content:center;margin-bottom:40px}
-@media (max-width:760px){.stats .grid4{grid-template-columns:1fr 1fr;gap:40px 16px}}
+@media (max-width:600px){.stats .grid4{grid-template-columns:1fr;gap:36px}}
 
 /* service cards */
 .svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
@@ -262,14 +262,13 @@ footer{border-top:1px solid var(--line);background:#081120}
     <span class="coords">Knoxville · Sevier County · East Tennessee</span>
   </section>
 
-  <section class="stats" aria-label="What's included">
+  <section class="stats" aria-label="By the numbers">
     <div class="wrap">
-      <span class="eyebrow c">Every listing, covered</span>
+      <span class="eyebrow c">By the numbers</span>
       <div class="grid4">
-        <div class="stat rv"><b>$295</b><span>Packages from</span></div>
-        <div class="stat rv"><b>Included</b><span>Floor plan, every shoot</span></div>
-        <div class="stat rv"><b>Included</b><span>Website + marketing kit</span></div>
-        <div class="stat rv"><b>À la carte</b><span>Book any service solo</span></div>
+        <div class="stat rv"><b>$500M+</b><span>In real estate shot</span></div>
+        <div class="stat rv"><b>1,000+</b><span>Listings shot</span></div>
+        <div class="stat rv"><b>400+</b><span>Agents served</span></div>
       </div>
     </div>
   </section>
