@@ -377,6 +377,10 @@ body.locked{overflow:hidden}
 .tm .ok{display:none;text-align:center;padding:10px 0 4px}
 .tm .ok svg{width:46px;height:46px;fill:none;stroke:#1fd17a;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:10px}
 .tm.sent form{display:none}.tm.sent .ok{display:block}
+.tm .btn{border-color:var(--ink);color:var(--ink);background:transparent}
+.tm .btn:hover{background:var(--ink);color:#fff}
+.tm .btn.fill{background:var(--ink);color:#fff}
+.tm .btn.fill:hover{background:var(--slate);border-color:var(--slate)}
 .err{color:#b4413c;font-size:.8rem;min-height:1em;margin-top:-6px;margin-bottom:8px}
 @media (max-width:900px){.sg{grid-template-columns:1fr}.out{position:static}}
 @media (max-width:600px){.sg-hero{padding-block:96px 34px}.panel{padding:24px 20px 26px}.row3{grid-template-columns:1fr 1fr}.row3 .f:last-child{grid-column:1/-1}.acts{grid-template-columns:1fr}.beat p{font-size:1.15rem}}
@@ -558,7 +562,7 @@ body.locked{overflow:hidden}
     var feats=val('feat').split(/\n+/).map(function(s){return s.trim()}).filter(Boolean).slice(0,3);
     if(!feats.length)feats=['an open, light-filled layout','a kitchen made for gathering','space to relax outside'];
     var bb=[val('beds')&&val('beds')+' bedrooms',val('baths')&&val('baths')+' bathrooms',val('sqft')&&val('sqft')+' square feet'].filter(Boolean);
-    var name=val('agent')||'your agent',brok=val('brok'),area=val('area');
+    var name=val('agent'),brok=val('brok'),area=val('area');
     var hooks={Warm:['Come home to '+street+'.','Picture yourself living at '+street+'.','This one feels like home the moment you walk in.'],
       Luxury:['Welcome to '+street+'.','Some homes are simply a cut above. This is one of them.','Introducing '+street+'.'],
       Upbeat:['Okay, you need to see this one!','Stop scrolling. '+street+' just hit the market!','This might be the one you have been waiting for!']};
@@ -569,7 +573,7 @@ body.locked{overflow:hidden}
     beats.push({k:'Highlights',t:(tone==='Upbeat'?'You’ll love ':'You’ll find ')+list(fl.map(function(x){return x.charAt(0).toLowerCase()+x.slice(1)}))+'.'});
     if(area&&len!=='15 sec')beats.push({k:'Location',t:area.charAt(0).toUpperCase()+area.slice(1)+(/[.!]$/.test(area)?'':'.')});
     if(type==='Full walkthrough'&&len==='60 sec')beats.push({k:'Walkthrough',t:'Let’s take a look inside, starting with the main living space and working our way through every room.'});
-    beats.push({k:'Close',t:'I’m '+name+(brok?' with '+brok:'')+'. '+ctas[cta]});
+    beats.push({k:'Close',t:(name?'I’m '+name+(brok?' with '+brok:'')+'. ':'')+ctas[cta]});
     return {beats:beats,meta:[type,len,tone]};
   }
   function render(){
