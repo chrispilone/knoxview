@@ -294,6 +294,19 @@ body.locked{overflow:hidden}
 .crumb{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);text-decoration:none}
 .crumb:hover{color:var(--text)}
 @media (max-width:760px){.ck-grid{grid-template-columns:1fr;gap:32px}.walk{font-size:1.15rem}}
+
+/* compact footer */
+.foot2{display:flex;align-items:center;justify-content:space-between;gap:28px;padding-block:30px 22px;flex-wrap:wrap}
+.foot2 .logo{width:110px}
+.foot2 ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.foot2 ul a{text-decoration:none;font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);transition:color .2s}
+.foot2 ul a:hover{color:var(--text)}
+.foot2 .btn.sm{flex:none}
+.fbase2{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-block:16px 26px;color:var(--mute);font-size:.78rem;letter-spacing:.04em}
+.fbase2 a{text-decoration:none;color:var(--soft)}
+.fbase2 a:hover{color:var(--text)}
+.fbase2 span+span::before{content:"·";margin:0 10px;color:var(--mute)}
+@media (max-width:820px){.foot2{flex-direction:column;align-items:center;text-align:center;gap:22px}.foot2 ul{justify-content:center;gap:14px 22px}.fbase2{justify-content:center;text-align:center}}
 </style>
 </head>
 <body>
@@ -388,13 +401,20 @@ body.locked{overflow:hidden}
 </main>
 
 <footer id="contact">
-  <div class="wrap fcols">
-    <div><span class="logo" role="img" aria-label="Knox View Real Estate Media" style="width:170px"></span><p>Listing photography, drone, tours, reels and property websites for agents across East Tennessee.</p><a class="btn sm" href="https://book.knoxview.com" target="_blank" rel="noopener" style="margin-top:20px">Book a shoot</a></div>
-    <div><h4>Explore</h4><ul><li><a href="/packages">Services &amp; Pricing</a></li><li><a href="/packages#alacarte">À la carte</a></li><li><a href="/about">About</a></li><li><a href="/resources/">Resources</a></li><li><a href="#contact">Contact</a></li></ul></div>
-    <div><h4>Areas we serve</h4><ul><li>Knoxville</li><li>Sevierville</li><li>Pigeon Forge</li><li>Gatlinburg</li><li>Surrounding areas</li></ul></div>
-    <div><h4>Contact</h4><ul><li><a href="tel:+18658555669">865-855-5669</a></li><li><a href="mailto:chris@knoxview.com">chris@knoxview.com</a></li></ul></div>
+  <div class="wrap foot2">
+    <a href="/" aria-label="Knox View Real Estate Media home"><span class="logo"></span></a>
+    <ul>
+      <li><a href="/packages">Services &amp; Pricing</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn sm" href="https://book.knoxview.com" target="_blank" rel="noopener">Book a shoot</a>
   </div>
-  <div class="wrap fbase">© 2026 Knox View Real Estate Media · knoxview.com</div>
+  <div class="wrap fbase2">
+    <div>© 2026 Knox View Real Estate Media</div>
+    <div><span><a href="tel:+18658555669">865-855-5669</a></span><span><a href="mailto:chris@knoxview.com">chris@knoxview.com</a></span></div>
+  </div>
 </footer>
 
 <script>
