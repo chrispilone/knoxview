@@ -220,6 +220,26 @@ footer{border-top:1px solid var(--line);background:#081120}
   .rv{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
   .rv.in{opacity:1;transform:none}
 }
+.card .sub{display:block;text-align:center;font-family:var(--display);font-style:italic;font-size:1.25rem;color:var(--slate);margin-top:4px}
+.card.top .sub{color:var(--accent)}
+.card.pop{border-color:var(--slate);box-shadow:0 0 0 1px var(--slate),0 12px 32px -18px rgba(15,35,71,.35)}
+.card .nm+.sub{margin-top:6px}
+.card{position:relative}.card .flag{position:absolute;top:14px;left:0;right:0;margin:0}.card .nm{padding-top:38px}
+.pk-more{text-align:center;margin-top:36px;color:var(--ink-soft);font-size:.95rem}
+.pk-more a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--rule);padding-bottom:2px;margin-left:6px}
+.pk-more a:hover{border-color:var(--ink)}
+.pk.two{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);max-width:980px;margin-inline:auto}
+.card.lux ul{grid-template-columns:1fr 1fr;column-gap:24px}
+@media (max-width:900px){.pk.two{grid-template-columns:1fr;max-width:460px}.card.lux ul{grid-template-columns:1fr}}
+.subhead{text-align:center;margin:96px 0 40px;display:grid;gap:14px;justify-items:center}
+.subhead h2{font-size:clamp(1.8rem,4vw,2.8rem);text-transform:uppercase;letter-spacing:.12em}
+.addons{max-width:560px;margin:48px auto 0}
+.addons h4{margin:0 0 14px;text-align:center;font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--slate)}
+.page-hero{padding-block:170px 70px;text-align:center;background:radial-gradient(ellipse 80% 80% at 50% 20%,#16294a 0%,var(--night) 70%)}
+.page-hero .wrap{display:grid;gap:22px;justify-items:center}
+.page-hero h1{font-size:clamp(2.6rem,7vw,5rem);text-transform:uppercase;letter-spacing:.1em}
+.page-hero h1 em{text-transform:none;letter-spacing:0;font-style:italic;color:var(--accent)}
+.page-hero p{color:var(--soft);max-width:34rem}
 </style>
 </head>
 <body>
@@ -332,29 +352,34 @@ footer{border-top:1px solid var(--line);background:#081120}
       <div class="head rv">
         <span class="eyebrow c">Packages</span>
         <h2>Listing media <em class="ac">packages</em></h2>
-        <p>Bundled for the way listings actually sell. Every package includes a property website and marketing kit.</p>
+        <p>One simple price per package, with 30+ photos and every room covered. Every package includes a property website and marketing kit.</p>
       </div>
       <div class="pk">
         <article class="card rv">
           <h3 class="nm">BASE</h3>
+          <span class="sub">List it</span>
           <div class="pr">$295</div>
           <ul>
-            <li>30+ photos</li>
+            <li>Interior and exterior photos</li>
             <li>Drone photos</li>
             <li>2D floor plan</li>
+            <li>Virtual twilight</li>
             <li>Property website</li>
             <li>Marketing kit</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Base</a>
         </article>
-        <article class="card rv">
+        <article class="card pop rv">
           <h3 class="nm">PRO</h3>
+          <span class="flag">Most popular</span>
+          <span class="sub">Market it</span>
           <div class="pr">$475</div>
           <ul>
-            <li>35+ photos</li>
+            <li>Interior and exterior photos</li>
             <li>Drone photos</li>
-            <li>Zillow 3D tour <small>or highlight reel</small></li>
+            <li>Highlight video</li>
             <li>2D floor plan</li>
+            <li>Virtual twilight</li>
             <li>Property website</li>
             <li>Marketing kit</li>
           </ul>
@@ -362,14 +387,14 @@ footer{border-top:1px solid var(--line);background:#081120}
         </article>
         <article class="card top rv">
           <h3 class="nm">PREMIUM</h3>
-          <span class="flag">Everything included</span>
+          <span class="sub">Showcase it</span>
           <div class="pr">$745</div>
           <ul>
-            <li>40+ photos</li>
+            <li>Interior and exterior photos</li>
             <li>Drone photos</li>
-            <li>Premium reel</li>
-            <li>Zillow 3D virtual tour</li>
-            <li>Premium floor plan</li>
+            <li>Premium video</li>
+            <li>Zillow 3D Home tour</li>
+            <li>2D floor plan</li>
             <li>Virtual twilights</li>
             <li>Location graphics</li>
             <li>Property website</li>
@@ -378,6 +403,7 @@ footer{border-top:1px solid var(--line);background:#081120}
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Premium</a>
         </article>
       </div>
+      <p class="pk-more rv">Need Zillow Showcase or a luxury shoot? <a href="/packages">See all packages &amp; add-ons</a></p>
 
       <div class="alc" id="alacarte">
         <div class="head rv" style="margin-bottom:40px">
