@@ -309,7 +309,7 @@ body.locked{overflow:hidden}
 /* package comparison */
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .cmp-wrap{max-width:980px;margin:0 auto}
-.cmp-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.cmp-tools{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-bottom:14px}
 .cmp-toggle{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);user-select:none}
 .cmp-toggle input{position:absolute;opacity:0;width:1px;height:1px}
 .cmp-toggle .sw{position:relative;width:38px;height:22px;border-radius:99px;background:var(--haze2);transition:background .25s;flex:none}
@@ -388,6 +388,8 @@ body.locked{overflow:hidden}
 .cmp-drop .rv{opacity:1!important;transform:none!important}
 @media (max-width:760px){.cmp-flag{font-size:.5rem;letter-spacing:.12em}}
 @media (max-width:600px){.cmp-drop{margin-top:44px}.cmp-drop>summary{padding:18px 18px}.cd-t{font-size:1.3rem}.cmp-drop .cmp-wrap{padding:2px 10px 16px}}
+.cmp-tools:not(:has(.cmp-hint:not([style*="none"]))){margin:0}
+@media (min-width:761px){.cmp-tools{display:none}}
 </style>
 </head>
 <body>
@@ -556,7 +558,6 @@ body.locked{overflow:hidden}
         <summary><span class="cd-l"><span class="cd-k">Side by side</span><span class="cd-t">Compare packages</span></span><span class="cd-ic" aria-hidden="true"></span></summary>
         <div class="cmp-wrap">
         <div class="cmp-tools rv">
-          <label class="cmp-toggle"><input type="checkbox" id="cmpDiff"><span class="sw" aria-hidden="true"></span>Show differences only</label>
           <span class="cmp-hint" aria-hidden="true">Swipe to compare &#8594;</span>
         </div>
         <div class="cmp-scroll rv" id="cmpScroll" tabindex="0" role="region" aria-label="Package comparison table">
@@ -617,15 +618,6 @@ body.locked{overflow:hidden}
 <script>
 (function(){
   var sc=document.getElementById('cmpScroll');if(!sc)return;
-  var tog=document.getElementById('cmpDiff');
-  tog.addEventListener('change',function(){
-    var rows=[].slice.call(sc.querySelectorAll('tbody tr'));var group=null,any=false;
-    rows.forEach(function(r){
-      if(r.classList.contains('cmp-group')){if(group)group.classList.toggle('hide',!any);group=r;any=false;return}
-      var h=tog.checked&&r.classList.contains('same');r.classList.toggle('hide',h);if(!h)any=true;
-    });
-    if(group)group.classList.toggle('hide',!any);
-  });
   function sh(){sc.classList.toggle('shadow',sc.scrollLeft>4)}
   sc.addEventListener('scroll',sh,{passive:true});sh();
 })();
