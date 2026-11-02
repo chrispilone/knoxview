@@ -113,17 +113,6 @@ header.scrolled{background:rgba(11,22,40,.88);backdrop-filter:blur(10px);-webkit
 .film iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .film .x{position:absolute;top:-46px;right:0;background:none;border:1px solid rgba(231,237,246,.5);color:var(--text);border-radius:8px;padding:8px 14px;font:600 .68rem var(--body);letter-spacing:.22em;text-transform:uppercase;cursor:pointer}
 @media (prefers-reduced-motion:reduce){.hero-bg iframe{display:none}}
-
-/* hero photo */
-.hero-photo{position:absolute;inset:0;z-index:0}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:38% 50%;display:block}
-.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,17,32,.78) 0%,rgba(8,17,32,.42) 34%,rgba(8,17,32,.5) 62%,#0d1b32 100%)}
-.hero .eyebrow{color:#cfdbea}
-.hero .chips a{color:#c3cfdf}
-.hero .chips a:hover{color:#fff}
-.hero h1{text-shadow:0 2px 24px rgba(5,12,24,.45)}
-.hero h1 em{color:#a9c1e2}
-@media (max-width:700px){.hero{min-height:88svh}.hero-photo img{object-position:50% 50%}.hero-shade{background:linear-gradient(180deg,rgba(8,17,32,.8) 0%,rgba(8,17,32,.5) 40%,rgba(8,17,32,.6) 70%,#0d1b32 100%)}}
 .coords{position:absolute;left:0;right:0;bottom:22px;z-index:3;text-align:center;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--soft);font-weight:600}
 
 /* sections */
@@ -443,11 +432,12 @@ b[data-odo] .d .strip span{display:block}
         <a href="#services">Photography</a><a href="#services">Drone</a><a href="#services">3D tours</a><a href="#reels">Reels</a><a href="#services">Twilight</a><a href="#services">Video</a>
       </nav>
     </div>
-    <picture class="hero-photo" aria-hidden="true">
-      <source media="(max-width:700px)" srcset="/img/hero-knoxville-mobile.jpg">
-      <img src="/img/hero-knoxville-2400.jpg" srcset="/img/hero-knoxville-1200.jpg 1200w, /img/hero-knoxville-2400.jpg 2457w" sizes="100vw" alt="" fetchpriority="high" decoding="async">
-    </picture>
-    <div class="hero-shade" aria-hidden="true"></div>
+    <svg class="ridge" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+      <path class="r1" fill="#16263f" d="M-40 170 L80 120 L170 150 L290 80 L400 130 L520 70 L640 125 L760 60 L880 115 L1010 50 L1130 110 L1250 70 L1380 120 L1500 90 L1500 300 L-40 300Z"/>
+      <path class="r2" fill="#1d3150" d="M-40 210 L110 160 L230 195 L360 140 L480 185 L610 130 L740 180 L860 145 L990 190 L1120 135 L1260 185 L1380 150 L1500 175 L1500 300 L-40 300Z"/>
+      <path fill="#14243d" d="M-40 245 L140 205 L300 235 L450 195 L620 238 L780 200 L940 240 L1100 205 L1270 238 L1420 210 L1500 225 L1500 300 L-40 300Z"/>
+      <path fill="#0b1628" d="M-40 280 L200 250 L420 272 L640 248 L880 274 L1120 252 L1340 272 L1500 258 L1500 300 L-40 300Z"/>
+    </svg>
     <span class="coords">Knoxville · Sevier County · East Tennessee</span>
   </section>
 
