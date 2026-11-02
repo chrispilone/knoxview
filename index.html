@@ -203,6 +203,25 @@ header.scrolled{background:rgba(11,22,40,.88);backdrop-filter:blur(10px);-webkit
 .stack:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:12px}
 @media (prefers-reduced-motion:reduce){.stack .phone{transition:none}}
 @media (max-width:600px){.stack .vids{aspect-ratio:1/1.2}.stack .phone{width:54%;margin-left:-27%}.stack .phone.pos-l{transform:translateX(-52%) scale(.8) rotateY(14deg)}.stack .phone.pos-r{transform:translateX(52%) scale(.8) rotateY(-14deg)}}
+
+/* 7-reel stack: far phones + sound button */
+#reels{overflow-x:clip}
+.stack .phone.pos-far{z-index:1;transform:translateX(0) scale(.7);opacity:0;pointer-events:none}
+.stack .phone.pos-l2{z-index:1;transform:translateX(-95%) scale(.66) rotateY(18deg);opacity:0;pointer-events:none}
+.stack .phone.pos-r2{z-index:1;transform:translateX(95%) scale(.66) rotateY(-18deg);opacity:0;pointer-events:none}
+.phone .screen iframe{opacity:0;transition:opacity .6s}
+.phone .screen iframe.ready{opacity:1}
+.phone .snd{position:absolute;right:9%;bottom:4.5%;z-index:4;width:38px;height:38px;border-radius:50%;border:0;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;display:grid;place-items:center;cursor:pointer;opacity:0;transform:scale(.85);transition:opacity .3s,transform .3s,background .2s;pointer-events:none}
+.stack .phone.pos-0 .snd{opacity:1;transform:none;pointer-events:auto}
+.phone .snd:hover{background:rgba(0,0,0,.75)}
+.phone .snd svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.phone .snd svg path:first-child{fill:currentColor;stroke:none}
+.phone .snd .i-on{display:none}
+.phone .snd[aria-pressed="true"] .i-on{display:block}
+.phone .snd[aria-pressed="true"] .i-off{display:none}
+.phone .snd:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.stack-hint{display:block;text-align:center;margin-top:10px;font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+@media (max-width:600px){.phone .snd{width:32px;height:32px}.phone .snd svg{width:16px;height:16px}}
 .vid small{position:relative;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);font-weight:600}
 @media (max-width:900px){.reels{grid-template-columns:1fr;gap:48px}.reels .head{justify-items:center;text-align:center}}
 
@@ -660,13 +679,17 @@ b[data-odo] .d .strip span{display:block}
       </div>
       <div class="stack rv" id="stack" role="region" aria-roledescription="carousel" aria-label="Listing reels" tabindex="0">
       <div class="vids">
-        <div class="phone"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2204238044-1aff287e6c0bc1866ac73b0ac8b24c4115c23a029511d4c76bc8c06539c19dbf-d_540x960?region=us')"><iframe src="https://player.vimeo.com/video/1229552456?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;dnt=1" allow="autoplay; picture-in-picture" loading="lazy" tabindex="-1" title="2527 Orchard House Way listing reel"></iframe></div></div><span class="island" aria-hidden="true"></span></div>
-        <div class="phone"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2188358780-031fc80cb5883847884e0c26d92b54fd90a51b761f8e04e69d7b2db5f5090be4-d_540x960?region=us')"><iframe src="https://player.vimeo.com/video/1216825550?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;dnt=1" allow="autoplay; picture-in-picture" loading="lazy" tabindex="-1" title="2381 Misty Mountain Circle listing reel"></iframe></div></div><span class="island" aria-hidden="true"></span></div>
-        <div class="phone"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2183862926-a497c6924a052003477097d511ba4a67a53ac5005c3f12e9fff575e33f49b661-d_540x960?region=us')"><iframe src="https://player.vimeo.com/video/1213245483?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;dnt=1" allow="autoplay; picture-in-picture" loading="lazy" tabindex="-1" title="9409 Johnson Rd listing reel"></iframe></div></div><span class="island" aria-hidden="true"></span></div>
+        <div class="phone" data-vid="1229552456" data-title="2527 Orchard House Way listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2204238044-1aff287e6c0bc1866ac73b0ac8b24c4115c23a029511d4c76bc8c06539c19dbf-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+        <div class="phone" data-vid="1216825550" data-title="2381 Misty Mountain Circle listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2188358780-031fc80cb5883847884e0c26d92b54fd90a51b761f8e04e69d7b2db5f5090be4-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+        <div class="phone" data-vid="1213245483" data-title="9409 Johnson Rd listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2183862926-a497c6924a052003477097d511ba4a67a53ac5005c3f12e9fff575e33f49b661-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+        <div class="phone" data-vid="1210209976" data-title="3205 Lansing Ave listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2180031411-56dc99e9be840fecce916ad536a9e92b3f032a7cb6cf4a2d397ef82281e6e9cf-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+        <div class="phone" data-vid="1209845861" data-title="175 Morganton Cove listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2179558502-44c3ffd9144f94e36e2457604688fc5eec886e92dc46911c8c93e0aa0d4f0004-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+        <div class="phone" data-vid="1198105136" data-title="561 Margrave Dr listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2164604160-0ce8a8624a573d4ed7b042c92450fbe2d688def5156e860a9aa5171e994e507f-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+        <div class="phone" data-vid="1194736595" data-title="1319 Licklog Hollow Road listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2160460080-1b2faa8b9fcc0f880876bf62a438c5bb442055311a526d6bcd9b012b1afb8f34-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
       </div>
         <button type="button" class="side l" id="stPrev" aria-label="Previous reel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
         <button type="button" class="side r" id="stNext" aria-label="Next reel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-        <div class="stack-nav"><div class="dots" id="stDots"><button type="button" aria-label="Reel 1"></button><button type="button" aria-label="Reel 2"></button><button type="button" aria-label="Reel 3"></button></div></div>
+        <div class="stack-nav"><div class="dots" id="stDots"></div></div>
       </div>
     </div>
   </section>
@@ -829,23 +852,56 @@ b[data-odo] .d .strip span{display:block}
   els.forEach(function(el){io.observe(el)});
 })();
 </script>
+<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 (function(){
   var st=document.getElementById('stack');if(!st)return;
-  var ph=[].slice.call(st.querySelectorAll('.phone')),dots=[].slice.call(st.querySelectorAll('.dots button')),n=ph.length,cur=0;
-  function set(i){cur=(i%n+n)%n;ph.forEach(function(p,k){var d=(k-cur+n)%n;p.classList.remove('pos-0','pos-l','pos-r');p.classList.add(d===0?'pos-0':d===1?'pos-r':'pos-l');p.setAttribute('aria-hidden',d===0?'false':'true')});dots.forEach(function(b,k){b.setAttribute('aria-current',k===cur?'true':'false')})}
+  var ph=[].slice.call(st.querySelectorAll('.phone')),n=ph.length,cur=0,sound=false,players={};
+  var dotsBox=document.getElementById('stDots');
+  dotsBox.innerHTML=ph.map(function(p,i){return '<button type="button" aria-label="Reel '+(i+1)+' of '+n+'"></button>'}).join('');
+  var dots=[].slice.call(dotsBox.children);
+  function src(id){return 'https://player.vimeo.com/video/'+id+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1'}
+  function ensure(p){
+    var id=p.getAttribute('data-vid');if(players[id])return players[id];
+    var f=document.createElement('iframe');f.src=src(id);f.title=p.getAttribute('data-title');f.tabIndex=-1;f.setAttribute('allow','autoplay; picture-in-picture');
+    p.querySelector('.screen').appendChild(f);
+    var pl=window.Vimeo?new Vimeo.Player(f):null;
+    if(pl){pl.on('play',function(){f.classList.add('ready')});pl.ready().then(function(){setTimeout(function(){f.classList.add('ready')},300)}).catch(function(){})}
+    else setTimeout(function(){f.classList.add('ready')},1500);
+    players[id]={f:f,p:pl};return players[id];
+  }
+  function audio(){
+    ph.forEach(function(p,k){var o=players[p.getAttribute('data-vid')];var on=sound&&k===cur;
+      var b=p.querySelector('.snd');b.setAttribute('aria-pressed',on?'true':'false');b.setAttribute('aria-label',on?'Turn sound off':'Turn sound on');
+      if(o&&o.p){if(on){o.p.setVolume(1).catch(function(){});o.p.setMuted(false).catch(function(){})}else{o.p.setMuted(true).catch(function(){})}}});
+  }
+  function set(i){
+    cur=(i%n+n)%n;
+    ph.forEach(function(p,k){var d=(k-cur+n)%n,c=d===0?'pos-0':d===1?'pos-r':d===n-1?'pos-l':d===2?'pos-r2':d===n-2?'pos-l2':'pos-far';
+      p.classList.remove('pos-0','pos-l','pos-r','pos-l2','pos-r2','pos-far');p.classList.add(c);p.setAttribute('aria-hidden',d===0?'false':'true');
+      var vis=c==='pos-0'||c==='pos-l'||c==='pos-r';
+      if(vis&&started){var o=ensure(p);if(o.p)o.p.play().catch(function(){})}
+      else{var o2=players[p.getAttribute('data-vid')];if(o2&&o2.p)o2.p.pause().catch(function(){})}});
+    dots.forEach(function(b,k){b.setAttribute('aria-current',k===cur?'true':'false')});
+    audio();
+  }
+  ph.forEach(function(p){p.querySelector('.snd').addEventListener('click',function(e){e.stopPropagation();sound=!(sound&&p.classList.contains('pos-0'));audio()})});
   document.getElementById('stPrev').addEventListener('click',function(){set(cur-1)});
   document.getElementById('stNext').addEventListener('click',function(){set(cur+1)});
   dots.forEach(function(b,k){b.addEventListener('click',function(){set(k)})});
   st.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();set(cur-1)}if(e.key==='ArrowRight'){e.preventDefault();set(cur+1)}});
   var sx=null,dx=0,moved=false;
-  st.querySelector('.vids').addEventListener('pointerdown',function(e){if(e.button)return;sx=e.clientX;dx=0;moved=false});
+  st.querySelector('.vids').addEventListener('pointerdown',function(e){if(e.button||e.target.closest('.snd'))return;sx=e.clientX;dx=0;moved=false});
   window.addEventListener('pointermove',function(e){if(sx===null)return;dx=e.clientX-sx;if(Math.abs(dx)>8){moved=true;st.classList.add('drag')}});
   window.addEventListener('pointerup',function(e){if(sx===null)return;st.classList.remove('drag');
     if(moved&&Math.abs(dx)>40)set(dx<0?cur+1:cur-1);
     else if(!moved){var p=e.target.closest&&e.target.closest('.phone');if(p&&!p.classList.contains('pos-0'))set(ph.indexOf(p))}
     sx=null});
   window.addEventListener('pointercancel',function(){sx=null;st.classList.remove('drag')});
+  // start videos only when the carousel scrolls near the screen
+  var started=false;
+  function start(){if(started)return;started=true;set(cur)}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){start();io.disconnect()}},{rootMargin:'300px'});io.observe(st)}else start();
   set(0);
 })();
 </script>
