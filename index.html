@@ -155,6 +155,9 @@ header.scrolled{background:rgba(11,22,40,.88);backdrop-filter:blur(10px);-webkit
 .vid:nth-child(2){transform:translateY(-28px)}
 .vid::before{content:"";position:absolute;left:50%;top:45%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;border:1px solid rgba(231,237,246,.7);background:rgba(255,255,255,.08)}
 .vid::after{content:"";position:absolute;left:50%;top:45%;margin:-8px 0 0 -4px;border-left:14px solid var(--text);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.vid.live{padding:0;background-size:cover;background-position:center;border-color:rgba(140,166,204,.35);box-shadow:0 22px 44px -22px rgba(0,0,0,.7)}
+.vid.live::before,.vid.live::after{content:none}
+.vid.live iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
 .vid small{position:relative;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);font-weight:600}
 @media (max-width:900px){.reels{grid-template-columns:1fr;gap:48px}.reels .head{justify-items:center;text-align:center}}
 
@@ -611,7 +614,7 @@ b[data-odo] .d .strip span{display:block}
         <p>Vertical video built for Instagram, Facebook and every social feed your buyers scroll. Each reel is edited to grab attention fast and keep your listing, and your name, in front of more people.</p>
       </div>
       <div class="vids rv">
-        <div class="vid"><small>Highlight reel</small></div>
+        <div class="vid live" style="background-image:url('https://i.vimeocdn.com/video/2204238044-1aff287e6c0bc1866ac73b0ac8b24c4115c23a029511d4c76bc8c06539c19dbf-d_540x960?region=us')"><iframe src="https://player.vimeo.com/video/1229552456?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;dnt=1" allow="autoplay; picture-in-picture" loading="lazy" tabindex="-1" title="2527 Orchard House Way listing reel"></iframe></div>
         <div class="vid"><small>Premium reel</small></div>
         <div class="vid"><small>Neighborhood</small></div>
       </div>
