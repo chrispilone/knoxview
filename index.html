@@ -122,6 +122,24 @@ header.scrolled{background:rgba(11,22,40,.88);backdrop-filter:blur(10px);-webkit
 .area-photo img{width:100%;height:100%;object-fit:cover;display:block}
 @media (max-width:760px){.mosaic .ph:last-child{grid-column:span 2;aspect-ratio:2/1}}
 @media (max-width:600px){.area-photo{aspect-ratio:16/9}.area-photo img{object-position:62% 50%!important}}
+
+/* community highlights film */
+.cfilm{margin:0 auto;max-width:1040px}
+.cframe{padding:10px;border-radius:22px;background:linear-gradient(145deg,rgba(140,166,204,.55),rgba(140,166,204,.08) 40%,rgba(140,166,204,.08) 60%,rgba(140,166,204,.45));box-shadow:0 40px 70px -40px rgba(0,0,0,.9),0 0 0 1px rgba(140,166,204,.18)}
+.cscreen{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000 center/cover no-repeat;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.cscreen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;opacity:0;transition:opacity .6s}
+.cscreen iframe.ready{opacity:1}
+.cscreen::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(transparent,rgba(5,12,24,.45));pointer-events:none;z-index:1}
+.cscreen .snd{position:absolute;right:18px;bottom:16px;z-index:3;width:42px;height:42px;border-radius:50%;border:0;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+.cscreen .snd:hover{background:rgba(0,0,0,.78)}
+.cscreen .snd svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cscreen .snd svg path:first-child{fill:currentColor;stroke:none}
+.cscreen .snd .i-on{display:none}.cscreen .snd[aria-pressed="true"] .i-on{display:block}.cscreen .snd[aria-pressed="true"] .i-off{display:none}
+.cfilm figcaption{display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:8px 16px;margin-top:22px;text-align:center}
+.cap-k{font-size:.62rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--accent)}
+.cap-t{font-family:var(--display);font-size:1.5rem;color:var(--text)}
+.cap-s{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--soft)}
+@media (max-width:600px){.cframe{padding:6px;border-radius:16px}.cscreen{border-radius:11px}.cscreen .snd{width:36px;height:36px;right:12px;bottom:12px}.cfilm figcaption{flex-direction:column;align-items:center;gap:4px}}
 .coords{position:absolute;left:0;right:0;bottom:22px;z-index:3;text-align:center;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--soft);font-weight:600}
 
 /* sections */
@@ -703,6 +721,24 @@ b[data-odo] .d .strip span{display:block}
     </div>
   </section>
 
+  <section class="sec" id="community" aria-label="Community highlights" style="padding-top:0">
+    <div class="wrap">
+      <div class="head rv">
+        <span class="eyebrow c">Community highlights</span>
+        <h2>Show buyers <em class="ac">the neighborhood</em></h2>
+        <p>Aerial community films that capture the amenities, the views and the lifestyle that come with every home.</p>
+      </div>
+      <figure class="cfilm rv">
+        <div class="cframe">
+          <div class="cscreen" id="cfilm" data-vid="1126149593" style="background-image:url('https://i.vimeocdn.com/video/2068497458-b95c6fb2ada3d832dcca333ba3c85121a16c6e5a7188fcdc25b4c0f80b5d95af-d_1280x720?region=us')">
+            <button type="button" class="snd" id="cfilmSnd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>
+          </div>
+        </div>
+        <figcaption><span class="cap-k">Featured community</span><span class="cap-t">Tennessee National</span><span class="cap-s">Aerial community film</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="collage" id="work" aria-label="Recent work">
     <div class="wrap">
       <div class="head rv">
@@ -913,6 +949,23 @@ b[data-odo] .d .strip span{display:block}
   function start(){if(started)return;started=true;set(cur)}
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){start();io.disconnect()}},{rootMargin:'300px'});io.observe(st)}else start();
   set(0);
+})();
+</script>
+<script>
+(function(){
+  var box=document.getElementById('cfilm');if(!box)return;var btn=document.getElementById('cfilmSnd'),pl=null,f=null,on=false;
+  function load(){
+    f=document.createElement('iframe');f.title='Tennessee National aerial community film';f.tabIndex=-1;f.setAttribute('allow','autoplay; picture-in-picture');
+    f.src='https://player.vimeo.com/video/'+box.getAttribute('data-vid')+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1';
+    box.insertBefore(f,btn);
+    if(window.Vimeo){pl=new Vimeo.Player(f);pl.on('play',function(){f.classList.add('ready')});pl.ready().then(function(){setTimeout(function(){f.classList.add('ready')},300)}).catch(function(){})}
+    else setTimeout(function(){f.classList.add('ready')},1500);
+  }
+  btn.addEventListener('click',function(){on=!on;btn.setAttribute('aria-pressed',on);btn.setAttribute('aria-label',on?'Turn sound off':'Turn sound on');
+    if(pl){if(on){pl.setVolume(1).catch(function(){});pl.setMuted(false).catch(function(){})}else pl.setMuted(true).catch(function(){})}});
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){if(!f)load();else if(pl)pl.play().catch(function(){})}else if(pl)pl.pause().catch(function(){})})},{rootMargin:'200px'});io.observe(box)}
+  else load();
 })();
 </script>
 </body>
