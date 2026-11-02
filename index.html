@@ -176,6 +176,24 @@ header.scrolled{background:rgba(11,22,40,.88);backdrop-filter:blur(10px);-webkit
 .phone .ph-play{position:absolute;left:50%;top:46%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:1px solid rgba(231,237,246,.7);background:rgba(255,255,255,.08)}
 @media (max-width:600px){.phone .screen.empty small{font-size:.48rem;letter-spacing:.12em}.phone .ph-play{width:34px;height:34px;margin:-17px 0 0 -17px}}
 .phone .ph-play::after{content:"";position:absolute;left:50%;top:50%;margin:-8px 0 0 -4px;border-left:14px solid var(--text);border-top:8px solid transparent;border-bottom:8px solid transparent}
+
+/* swipeable phone stack */
+.stack{position:relative;outline:none;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.stack .vids{display:block;position:relative;height:auto;aspect-ratio:1/1.04;max-width:520px;margin:0 auto;perspective:1400px}
+.stack .phone{position:absolute;top:2%;left:50%;width:46%;margin-left:-23%;transform:none;transition:transform .7s cubic-bezier(.22,1,.36,1),filter .7s,opacity .7s;cursor:grab;will-change:transform}
+.stack .phone:nth-child(2){transform:none}
+.stack .phone.pos-0{z-index:3;transform:translateX(0) scale(1)}
+.stack .phone.pos-l{z-index:2;transform:translateX(-62%) scale(.82) rotateY(14deg);filter:brightness(.55) saturate(.8);cursor:pointer}
+.stack .phone.pos-r{z-index:2;transform:translateX(62%) scale(.82) rotateY(-14deg);filter:brightness(.55) saturate(.8);cursor:pointer}
+.stack.drag .phone{transition:none;cursor:grabbing}
+.stack-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:6px}
+.dots{display:flex;gap:8px}
+.dots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:rgba(140,166,204,.35);cursor:pointer;transition:width .3s,background .3s}
+.dots button[aria-current="true"]{width:24px;background:var(--accent)}
+.stack-nav .arr{width:40px;height:40px}
+.stack:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:12px}
+@media (prefers-reduced-motion:reduce){.stack .phone{transition:none}}
+@media (max-width:600px){.stack .vids{aspect-ratio:1/1.2}.stack .phone{width:54%;margin-left:-27%}.stack .phone.pos-l{transform:translateX(-52%) scale(.8) rotateY(14deg)}.stack .phone.pos-r{transform:translateX(52%) scale(.8) rotateY(-14deg)}}
 .vid small{position:relative;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);font-weight:600}
 @media (max-width:900px){.reels{grid-template-columns:1fr;gap:48px}.reels .head{justify-items:center;text-align:center}}
 
@@ -631,10 +649,17 @@ b[data-odo] .d .strip span{display:block}
         <h2>Reels that get you <em class="ac">noticed</em></h2>
         <p>Vertical video built for Instagram, Facebook and every social feed your buyers scroll. Each reel is edited to grab attention fast and keep your listing, and your name, in front of more people.</p>
       </div>
-      <div class="vids rv">
+      <div class="stack rv" id="stack" role="region" aria-roledescription="carousel" aria-label="Listing reels" tabindex="0">
+      <div class="vids">
         <div class="phone"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2204238044-1aff287e6c0bc1866ac73b0ac8b24c4115c23a029511d4c76bc8c06539c19dbf-d_540x960?region=us')"><iframe src="https://player.vimeo.com/video/1229552456?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;dnt=1" allow="autoplay; picture-in-picture" loading="lazy" tabindex="-1" title="2527 Orchard House Way listing reel"></iframe></div><span class="island" aria-hidden="true"></span></div>
         <div class="phone"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2188358780-031fc80cb5883847884e0c26d92b54fd90a51b761f8e04e69d7b2db5f5090be4-d_540x960?region=us')"><iframe src="https://player.vimeo.com/video/1216825550?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;dnt=1" allow="autoplay; picture-in-picture" loading="lazy" tabindex="-1" title="2381 Misty Mountain Circle listing reel"></iframe></div><span class="island" aria-hidden="true"></span></div>
-        <div class="phone"><div class="screen empty"><span class="ph-play" aria-hidden="true"></span><small>Neighborhood</small></div><span class="island" aria-hidden="true"></span></div>
+        <div class="phone"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2183862926-a497c6924a052003477097d511ba4a67a53ac5005c3f12e9fff575e33f49b661-d_540x960?region=us')"><iframe src="https://player.vimeo.com/video/1213245483?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;autopause=0&amp;dnt=1" allow="autoplay; picture-in-picture" loading="lazy" tabindex="-1" title="9409 Johnson Rd listing reel"></iframe></div><span class="island" aria-hidden="true"></span></div>
+      </div>
+        <div class="stack-nav">
+          <button type="button" class="arr" id="stPrev" aria-label="Previous reel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="dots" id="stDots"><button type="button" aria-label="Reel 1"></button><button type="button" aria-label="Reel 2"></button><button type="button" aria-label="Reel 3"></button></div>
+          <button type="button" class="arr" id="stNext" aria-label="Next reel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
       </div>
     </div>
   </section>
@@ -795,6 +820,26 @@ b[data-odo] .d .strip span{display:block}
   if(reduce||!('IntersectionObserver' in window)){els.forEach(roll);return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){roll(e.target);io.unobserve(e.target)}})},{threshold:.6});
   els.forEach(function(el){io.observe(el)});
+})();
+</script>
+<script>
+(function(){
+  var st=document.getElementById('stack');if(!st)return;
+  var ph=[].slice.call(st.querySelectorAll('.phone')),dots=[].slice.call(st.querySelectorAll('.dots button')),n=ph.length,cur=0;
+  function set(i){cur=(i%n+n)%n;ph.forEach(function(p,k){var d=(k-cur+n)%n;p.classList.remove('pos-0','pos-l','pos-r');p.classList.add(d===0?'pos-0':d===1?'pos-r':'pos-l');p.setAttribute('aria-hidden',d===0?'false':'true')});dots.forEach(function(b,k){b.setAttribute('aria-current',k===cur?'true':'false')})}
+  document.getElementById('stPrev').addEventListener('click',function(){set(cur-1)});
+  document.getElementById('stNext').addEventListener('click',function(){set(cur+1)});
+  dots.forEach(function(b,k){b.addEventListener('click',function(){set(k)})});
+  st.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();set(cur-1)}if(e.key==='ArrowRight'){e.preventDefault();set(cur+1)}});
+  var sx=null,dx=0,moved=false;
+  st.querySelector('.vids').addEventListener('pointerdown',function(e){if(e.button)return;sx=e.clientX;dx=0;moved=false});
+  window.addEventListener('pointermove',function(e){if(sx===null)return;dx=e.clientX-sx;if(Math.abs(dx)>8){moved=true;st.classList.add('drag')}});
+  window.addEventListener('pointerup',function(e){if(sx===null)return;st.classList.remove('drag');
+    if(moved&&Math.abs(dx)>40)set(dx<0?cur+1:cur-1);
+    else if(!moved){var p=e.target.closest&&e.target.closest('.phone');if(p&&!p.classList.contains('pos-0'))set(ph.indexOf(p))}
+    sx=null});
+  window.addEventListener('pointercancel',function(){sx=null;st.classList.remove('drag')});
+  set(0);
 })();
 </script>
 </body>
