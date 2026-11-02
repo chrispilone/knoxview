@@ -113,6 +113,15 @@ header.scrolled{background:rgba(11,22,40,.88);backdrop-filter:blur(10px);-webkit
 .film iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .film .x{position:absolute;top:-46px;right:0;background:none;border:1px solid rgba(231,237,246,.5);color:var(--text);border-radius:8px;padding:8px 14px;font:600 .68rem var(--body);letter-spacing:.22em;text-transform:uppercase;cursor:pointer}
 @media (prefers-reduced-motion:reduce){.hero-bg iframe{display:none}}
+
+/* real photos */
+.ph.has-img{padding:0}
+.ph.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.svc article:hover .ph.has-img img,.mosaic .ph.has-img:hover img{transform:scale(1.04)}
+.area-photo{margin:0 auto 34px;max-width:1100px;border-radius:16px;overflow:hidden;aspect-ratio:3/1;border:1px solid var(--line)}
+.area-photo img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:760px){.mosaic .ph:last-child{grid-column:span 2;aspect-ratio:2/1}}
+@media (max-width:600px){.area-photo{aspect-ratio:16/9}.area-photo img{object-position:62% 50%!important}}
 .coords{position:absolute;left:0;right:0;bottom:22px;z-index:3;text-align:center;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--soft);font-weight:600}
 
 /* sections */
@@ -660,12 +669,12 @@ b[data-odo] .d .strip span{display:block}
         <p>From the first photo to the property website buyers land on, one booking covers it all.</p>
       </div>
       <div class="svc">
-        <article class="rv"><div class="ph"><span>Interior</span></div><div class="body"><h3>Listing photography</h3><p>Bright, true-to-life interiors and exteriors, ready for the MLS. A basic floor plan comes with every shoot.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
-        <article class="rv"><div class="ph"><span>Aerial</span></div><div class="body"><h3>Aerial drone</h3><p>Aerial views that show the lot, the neighborhood and the views buyers are paying for.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
-        <article class="rv"><div class="ph"><span>Reel</span></div><div class="body"><h3>Social media reels</h3><p>Short vertical videos for Instagram, Facebook and TikTok that get a listing seen.</p><a class="more" href="#reels">See reels</a></div></article>
-        <article class="rv"><div class="ph"><span>3D tour</span></div><div class="body"><h3>3D tours</h3><p>A virtual walk-through buyers can explore from anywhere, ready for Zillow and the MLS.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
-        <article class="rv"><div class="ph"><span>Twilight</span></div><div class="body"><h3>Twilight photography</h3><p>Dusk exteriors with glowing windows and rich skies that make a listing stop the scroll.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
-        <article class="rv"><div class="ph"><span>Video</span></div><div class="body"><h3>Cinematic video</h3><p>A polished listing film that walks buyers through the home and shows off the setting.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
+        <article class="rv"><div class="ph has-img"><img src="/img/work/great-room.jpg" alt="Vaulted great room with exposed beams and stone fireplace" loading="lazy" decoding="async" style="object-position:50% 50%"></div><div class="body"><h3>Listing photography</h3><p>Bright, true-to-life interiors and exteriors, ready for the MLS. A basic floor plan comes with every shoot.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
+        <article class="rv"><div class="ph has-img"><img src="/img/work/lake-sunrise-drone.jpg" alt="Drone view of a lakefront home at sunrise" loading="lazy" decoding="async" style="object-position:50% 50%"></div><div class="body"><h3>Aerial drone</h3><p>Aerial views that show the lot, the neighborhood and the views buyers are paying for.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
+        <article class="rv"><div class="ph has-img"><img src="/img/work/farmhouse-living.jpg" alt="Bright farmhouse living and dining space" loading="lazy" decoding="async" style="object-position:50% 50%"></div><div class="body"><h3>Social media reels</h3><p>Short vertical videos for Instagram, Facebook and TikTok that get a listing seen.</p><a class="more" href="#reels">See reels</a></div></article>
+        <article class="rv"><div class="ph has-img"><img src="/img/work/kitchen-sunroom.jpg" alt="Kitchen opening to a sunroom with mountain views" loading="lazy" decoding="async" style="object-position:50% 50%"></div><div class="body"><h3>3D tours</h3><p>A virtual walk-through buyers can explore from anywhere, ready for Zillow and the MLS.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
+        <article class="rv"><div class="ph has-img"><img src="/img/work/craftsman-twilight.jpg" alt="Craftsman home glowing at twilight" loading="lazy" decoding="async" style="object-position:50% 50%"></div><div class="body"><h3>Twilight photography</h3><p>Dusk exteriors with glowing windows and rich skies that make a listing stop the scroll.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
+        <article class="rv"><div class="ph has-img"><img src="/img/work/lake-walkway-sunset.jpg" alt="Walkway down to the lake at sunset" loading="lazy" decoding="async" style="object-position:50% 50%"></div><div class="body"><h3>Cinematic video</h3><p>A polished listing film that walks buyers through the home and shows off the setting.</p><a class="more" href="https://book.knoxview.com" target="_blank" rel="noopener">Book this</a></div></article>
       </div>
     </div>
   </section>
@@ -701,15 +710,15 @@ b[data-odo] .d .strip span{display:block}
         <h2>Listings that <em class="ac">stand out</em></h2>
       </div>
       <div class="mosaic rv">
-        <div class="ph wide"><span>Drone</span></div>
-        <div class="ph tall"><span>Great room</span></div>
-        <div class="ph"><span>Exterior</span></div>
-        <div class="ph"><span>Kitchen</span></div>
-        <div class="ph"><span>Twilight</span></div>
-        <div class="ph"><span>Primary suite</span></div>
-        <div class="ph"><span>Bath</span></div>
-        <div class="ph wide"><span>Mountain view</span></div>
-        <div class="ph"><span>Deck</span></div>
+        <div class="ph wide has-img"><img src="/img/work/lake-house-aerial.jpg" alt="Lakefront home and dock from the water at dusk" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="ph tall has-img"><img src="/img/work/entry.jpg" alt="Bright entry with a lime-green front door and pine floors" loading="lazy" decoding="async" style="object-position:68% 50%"></div>
+        <div class="ph has-img"><img src="/img/work/craftsman-exterior.jpg" alt="Craftsman home exterior on a sunny day" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="ph has-img"><img src="/img/work/kitchen.jpg" alt="White kitchen with brick backsplash and butcher-block island" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="ph has-img"><img src="/img/work/craftsman-porch-twilight.jpg" alt="Stone and shake porch lit at twilight" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="ph has-img"><img src="/img/work/primary-suite-view.jpg" alt="Primary bedroom with a mountain view" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="ph has-img"><img src="/img/work/breakfast-nook.jpg" alt="Built-in breakfast nook with window seating" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="ph wide has-img"><img src="/img/work/farmland-sunset-drone.jpg" alt="Aerial view of East Tennessee farmland at sunset" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
+        <div class="ph has-img"><img src="/img/work/outdoor-fireplace.jpg" alt="Screened porch with a stone fireplace" loading="lazy" decoding="async" style="object-position:50% 50%"></div>
       </div>
       <p class="tag">Photos · Drone · Tours · Reels · Websites</p>
     </div>
@@ -750,6 +759,7 @@ b[data-odo] .d .strip span{display:block}
         <h2>Serving <em class="ac">East Tennessee</em></h2>
         <p>Based in Knoxville and shooting listings across the region, from downtown condos to cabins in the Smokies.</p>
       </div>
+      <figure class="area-photo rv"><img src="/img/work/knoxville-skyline.jpg" alt="Downtown Knoxville and the Tennessee River at sunset" loading="lazy" decoding="async" style="object-position:50% 45%"></figure>
       <div class="towns rv"><span class="hl">Knoxville</span><span>Farragut</span><span>Maryville</span><span>Oak Ridge</span><span>Powell</span><span>Sevierville</span><span>Pigeon Forge</span><span>Gatlinburg</span><span>Surrounding areas</span></div>
     </div>
   </section>
