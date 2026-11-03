@@ -144,6 +144,17 @@ header.scrolled{background:rgba(29,50,80,.88);backdrop-filter:blur(10px);-webkit
 .hero-sub span{display:inline-block;transition:transform .2s}
 .hero-sub:hover{color:#fff;border-color:#fff}
 .hero-sub:hover span{transform:translateX(3px)}
+
+/* hero photo */
+.hero-photo{position:absolute;inset:0;z-index:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:30% 45%;display:block}
+.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(23,42,68,.72) 0%,rgba(23,42,68,.38) 34%,rgba(23,42,68,.42) 62%,#213a5b 100%)}
+.hero h1{text-shadow:0 2px 22px rgba(10,22,40,.45)}
+.hero .eyebrow,.hero .chips a,.hero-sub{text-shadow:0 1px 10px rgba(10,22,40,.5)}
+.hero .chips a,.hero-sub{color:#dbe4f0}
+.hero h1 em{color:#cfe0f7}
+.hero .eyebrow{color:#e3ebf5}
+@media (max-width:700px){.hero{min-height:88svh}.hero-photo img{object-position:50% 50%}}
 .coords{position:absolute;left:0;right:0;bottom:22px;z-index:3;text-align:center;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--soft);font-weight:600}
 
 /* sections */
@@ -531,12 +542,11 @@ b[data-odo] .d .strip span{display:block}
         <a href="#services">Photography</a><a href="#services">Drone</a><a href="#services">3D tours</a><a href="#reels">Reels</a><a href="#services">Twilight</a><a href="#services">Video</a>
       </nav>
     </div>
-    <svg class="ridge" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
-      <path class="r1" fill="#2a4466" d="M-40 170 L80 120 L170 150 L290 80 L400 130 L520 70 L640 125 L760 60 L880 115 L1010 50 L1130 110 L1250 70 L1380 120 L1500 90 L1500 300 L-40 300Z"/>
-      <path class="r2" fill="#34527c" d="M-40 210 L110 160 L230 195 L360 140 L480 185 L610 130 L740 180 L860 145 L990 190 L1120 135 L1260 185 L1380 150 L1500 175 L1500 300 L-40 300Z"/>
-      <path fill="#26415f" d="M-40 245 L140 205 L300 235 L450 195 L620 238 L780 200 L940 240 L1100 205 L1270 238 L1420 210 L1500 225 L1500 300 L-40 300Z"/>
-      <path fill="#1d3250" d="M-40 280 L200 250 L420 272 L640 248 L880 274 L1120 252 L1340 272 L1500 258 L1500 300 L-40 300Z"/>
-    </svg>
+    <picture class="hero-photo" aria-hidden="true">
+      <source media="(max-width:700px)" srcset="/img/hero-smokies-mobile.jpg">
+      <img src="/img/hero-smokies-2576.jpg" srcset="/img/hero-smokies-1400.jpg 1400w, /img/hero-smokies-2576.jpg 2576w" sizes="100vw" alt="" fetchpriority="high" decoding="async">
+    </picture>
+    <div class="hero-shade" aria-hidden="true"></div>
     <span class="coords">Knoxville · Sevier County · East Tennessee</span>
   </section>
 
