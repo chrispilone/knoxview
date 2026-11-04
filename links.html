@@ -77,6 +77,25 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(1.45rem,7vw,1.85re
 .rc svg{width:18px;height:18px;fill:none;stroke:#9aa7b8;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block}
 @media (hover:hover){.row:hover,.quick a:hover{background:#f7f9fc}.cta:hover{background:#24477a}}
 a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* packages dropdown */
+.drop{background:#fff;border:1px solid var(--haze2);border-radius:16px;overflow:hidden}
+.drop summary{list-style:none;cursor:pointer;border:0;border-radius:0}
+.drop summary::-webkit-details-marker{display:none}
+.drop .rc svg{transition:transform .25s}
+.drop[open] .rc svg{transform:rotate(90deg)}
+.drop[open] summary{background:#fff}
+.pk{padding:2px 14px 14px;display:grid;gap:0;animation:pkin .28s ease}
+@keyframes pkin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.pi{padding:13px 4px;border-top:1px solid var(--haze1)}
+.ph{display:flex;align-items:center;gap:8px}
+.ph b{font-size:.98rem;font-weight:700}
+.fl{font-size:.56rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--slate);border-radius:99px;padding:3px 8px}
+.pp{margin-left:auto;font-family:var(--display);font-weight:600;font-size:1.35rem;line-height:1;color:var(--ink)}
+.pi p{margin:4px 0 0;color:#6f7e92;font-size:.82rem;line-height:1.4;padding-right:4px}
+.pk-all{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px;padding:13px;border-radius:12px;background:#eef2f7;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.pk-all svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pk-all:active{background:#e2e8f0}
 /* footer */
 .foot{margin-top:34px;text-align:center;display:grid;gap:6px;font-size:.8rem;color:var(--slate)}
 .foot a{color:var(--ink);font-weight:600}
@@ -115,7 +134,17 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 
     <p class="lbl">I&rsquo;m looking for</p>
     <div class="rows">
-      <a class="row" href="/packages"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="rt"><b>Packages &amp; pricing</b><small>Base, Pro, Premium and more</small></span><span class="rc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
+      <details class="drop">
+        <summary class="row"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="rt"><b>Packages &amp; pricing</b><small>See what&rsquo;s included and what it costs</small></span><span class="rc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></summary>
+        <div class="pk">
+          <div class="pi"><div class="ph"><b>Base</b><span class="pp">$295</span></div><p>Photos, drone, 2D floor plan, property website and marketing kit</p></div>
+          <div class="pi"><div class="ph"><b>Pro</b><span class="fl">Most popular</span><span class="pp">$525</span></div><p>Everything in Base, plus a highlight video and virtual twilight</p></div>
+          <div class="pi"><div class="ph"><b>Premium</b><span class="pp">$745</span></div><p>Everything in Pro, plus a premium video, agent on camera and a Zillow 3D tour</p></div>
+          <div class="pi"><div class="ph"><b>Zillow Showcase</b><span class="pp">$445</span></div><p>Photos, drone, Zillow 3D tour and interactive floor plan</p></div>
+          <div class="pi"><div class="ph"><b>Luxury</b><span class="pp">$1,395</span></div><p>Cinematic video, social reel, twilight photos, 3D tour and more</p></div>
+          <a class="pk-all" href="/packages">See full package details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </details>
       <a class="row" href="/"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="rt"><b>Visit our website</b><small>Our work, reviews and how it works</small></span><span class="rc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
       <a class="row" href="/resources/"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7M8 11h7"/></svg></span><span class="rt"><b>Resources</b><small>Prep checklist and tools for agents</small></span><span class="rc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
       <a class="row" href="https://book.knoxview.com" target="_blank" rel="noopener"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span class="rt"><b>Client portal</b><small>Download your media and orders</small></span><span class="rc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
