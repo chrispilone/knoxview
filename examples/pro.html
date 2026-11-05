@@ -525,6 +525,13 @@ body.locked{overflow:hidden}
   .facts li{min-width:0;padding:12px 14px}
 }
 .end .cta{margin-top:0}
+.exnav{display:inline-flex;padding:4px;gap:2px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.04);margin-bottom:6px}
+.exnav a{padding:9px 16px;border-radius:99px;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--soft);white-space:nowrap;transition:background .2s,color .2s}
+.exnav a:hover{color:var(--text);background:rgba(255,255,255,.08)}
+.exnav a[aria-current="page"]{background:var(--text);color:var(--night)}
+.exother{margin-top:22px;font-size:.78rem;color:var(--soft)}
+.exother a{color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px;margin:0 4px}
+@media (max-width:420px){.exnav a{padding:9px 11px;letter-spacing:.1em}}
 </style>
 </head>
 <body>
@@ -566,6 +573,7 @@ body.locked{overflow:hidden}
 <main id="top">
   <section class="page-hero ex-hero">
     <div class="wrap">
+      <nav class="exnav" aria-label="Package examples"><a href="/examples/base">Base</a><a href="/examples/pro" aria-current="page">Social Media</a><a href="/examples/premium">Premium</a></nav>
       <span class="eyebrow c">Real listing example</span>
       <h1>The Social Media <em>package</em></h1>
       <p>Every photo, video and floor plan below came from a single Social Media shoot.</p>
@@ -689,6 +697,7 @@ body.locked{overflow:hidden}
           <a class="btn fill" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Social Media</a>
           <a class="btn" href="/packages">See all packages</a>
         </div>
+        <p class="exother">Or see another example: <a href="/examples/base">Base</a> <a href="/examples/premium">Premium</a></p>
       </div>
     </div>
   </section>
