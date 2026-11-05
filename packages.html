@@ -401,6 +401,10 @@ body.locked{overflow:hidden}
 @media (max-width:1100px){.pk.four{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px;margin-inline:auto}}
 @media (max-width:640px){.pk.four{grid-template-columns:1fr;max-width:460px}}
 @media (max-width:900px){.pk.solo{max-width:460px}.card.lux ul{grid-template-columns:1fr}}
+.exnav{display:inline-flex;padding:4px;gap:2px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.04)}
+.exnav a{padding:9px 16px;border-radius:99px;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--soft);white-space:nowrap;transition:background .2s,color .2s}
+.exnav a:hover{color:var(--night);background:var(--text)}
+@media (max-width:420px){.exnav a{padding:9px 9px;letter-spacing:.06em;font-size:.6rem}}
 </style>
 </head>
 <body>
@@ -443,8 +447,8 @@ body.locked{overflow:hidden}
   <section class="page-hero">
     <div class="wrap">
       <span class="eyebrow c">Services &amp; pricing</span>
-      <h1>Everything your listing <em>needs</em></h1>
-      <p>From the first photo to the property website buyers land on, one booking covers it all.</p>
+      <h1>View <em>examples</em></h1>
+      <nav class="exnav" aria-label="Package examples"><a href="/examples/base">Base</a><a href="/examples/zillow-3d">Zillow 3D</a><a href="/examples/pro">Social Media</a><a href="/examples/premium">Premium</a></nav>
       <div class="ctas"><a class="btn fill" href="https://book.knoxview.com" target="_blank" rel="noopener">Book a shoot</a></div>
     </div>
   </section>
