@@ -758,7 +758,7 @@ body.locked{overflow:hidden}
   var btn=ph.querySelector('.snd'),pl=null,f=null,on=false;
   function load(){
     if(f)return;f=document.createElement('iframe');
-    f.src='https://player.vimeo.com/video/'+ph.getAttribute('data-vid')+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1';
+    f.src='https://player.vimeo.com/video/'+ph.getAttribute('data-vid')+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1&texttrack=false&cc=0';
     f.title='Social Media package highlight video';f.tabIndex=-1;f.setAttribute('allow','autoplay; picture-in-picture');
     ph.querySelector('.screen').appendChild(f);
     if(window.Vimeo){pl=new Vimeo.Player(f);pl.on('play',function(){f.classList.add('ready')});pl.ready().then(function(){setTimeout(function(){f.classList.add('ready')},300)}).catch(function(){})}

@@ -936,7 +936,7 @@ b[data-odo] .d .strip span{display:block}
   var dotsBox=document.getElementById('stDots');
   dotsBox.innerHTML=ph.map(function(p,i){return '<button type="button" aria-label="Reel '+(i+1)+' of '+n+'"></button>'}).join('');
   var dots=[].slice.call(dotsBox.children);
-  function src(id){return 'https://player.vimeo.com/video/'+id+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1'}
+  function src(id){return 'https://player.vimeo.com/video/'+id+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1&texttrack=false&cc=0'}
   function ensure(p){
     var id=p.getAttribute('data-vid');if(players[id])return players[id];
     var f=document.createElement('iframe');f.src=src(id);f.title=p.getAttribute('data-title');f.tabIndex=-1;f.setAttribute('allow','autoplay; picture-in-picture');
@@ -986,7 +986,7 @@ b[data-odo] .d .strip span{display:block}
   var box=document.getElementById('cfilm');if(!box)return;var btn=document.getElementById('cfilmSnd'),pl=null,f=null,on=false;
   function load(){
     f=document.createElement('iframe');f.title='Tennessee National aerial community film';f.tabIndex=-1;f.setAttribute('allow','autoplay; picture-in-picture');
-    f.src='https://player.vimeo.com/video/'+box.getAttribute('data-vid')+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1';
+    f.src='https://player.vimeo.com/video/'+box.getAttribute('data-vid')+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1&texttrack=false&cc=0';
     box.insertBefore(f,btn);
     if(window.Vimeo){pl=new Vimeo.Player(f);pl.on('play',function(){f.classList.add('ready')});pl.ready().then(function(){setTimeout(function(){f.classList.add('ready')},300)}).catch(function(){})}
     else setTimeout(function(){f.classList.add('ready')},1500);
