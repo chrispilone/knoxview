@@ -491,12 +491,7 @@ b[data-odo] .d .strip{display:flex}
 b[data-odo] .d .strip span{display:block}
 @media (prefers-reduced-motion:reduce){.odo .d .strip{transition:none}}
 /* cinematic film */
-.film{padding-block:40px 120px;position:relative;overflow:hidden}
-.film-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;max-width:1240px;margin:0 auto 34px;padding-inline:max(20px,env(safe-area-inset-left,0px))}
-.film-head h2{margin:0;font-size:clamp(2rem,5vw,3.6rem);text-transform:uppercase;letter-spacing:.12em;line-height:1.05}
-.film-head p{margin:0;color:var(--soft);font-size:1.05rem;max-width:30rem}
-.film-frame{max-width:1240px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px))}
-.fscreen{position:relative;aspect-ratio:2.39/1;border-radius:18px;overflow:hidden;background:#05080e;box-shadow:0 50px 90px -40px rgba(0,0,0,.85),inset 0 0 0 1px rgba(255,255,255,.06)}
+.fscreen{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 .fscreen iframe{position:absolute;top:50%;left:50%;width:100%;height:auto;aspect-ratio:16/9;transform:translate(-50%,-50%);border:0;pointer-events:none;opacity:0;transition:opacity .9s}
 .fscreen iframe.ready{opacity:1}
 .fscreen.full iframe{pointer-events:auto}
@@ -511,7 +506,7 @@ b[data-odo] .d .strip span{display:block}
 .fscreen .snd .i-on,.fscreen .snd[aria-pressed="true"] .i-off{display:none}
 .fscreen .snd[aria-pressed="true"] .i-on{display:block}
 .fscreen.full .fplay,.fscreen.full .snd{display:none}
-@media (max-width:700px){.film{padding-block:20px 80px}.film-head{gap:10px}.fscreen{aspect-ratio:16/9;border-radius:12px}.fplay{bottom:12px;padding:10px 14px 10px 12px;font-size:.6rem}.fscreen .snd{width:36px;height:36px;right:12px;bottom:12px}}
+@media (max-width:700px){.fscreen{border-radius:11px}.fplay{bottom:12px;padding:10px 14px 10px 12px;font-size:.6rem}.fscreen .snd{width:36px;height:36px;right:12px;bottom:12px}}
 </style>
 </head>
 <body>
@@ -773,17 +768,21 @@ b[data-odo] .d .strip span{display:block}
     </div>
   </section>
 
-  <section class="film" id="film" aria-label="Cinematic listing film">
-    <div class="film-head rv">
+  <section class="sec" id="film" aria-label="Cinematic listing film" style="padding-top:0">
+    <div class="wrap">
+    <div class="head rv">
       <h2>Cinematic <em class="ac">storytelling</em></h2>
       <p>Every home has a story. We film it like a movie.</p>
     </div>
-    <div class="film-frame rv">
-      <div class="fscreen" id="fscreen" data-vid="1234676365">
-        <button type="button" class="fplay" id="fplay" aria-label="Watch the full film with sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><span>Watch the film</span></button>
-        <button type="button" class="snd" id="filmSnd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>
+    <div class="cfilm rv">
+      <div class="cframe">
+        <div class="fscreen" id="fscreen" data-vid="1234676365">
+          <button type="button" class="fplay" id="fplay" aria-label="Watch the full film with sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><span>Watch the film</span></button>
+          <button type="button" class="snd" id="filmSnd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>
+        </div>
       </div>
     </div>
+  </div>
   </section>
 
   <section class="sec" id="community" aria-label="Community highlights" style="padding-top:0">
@@ -1047,7 +1046,7 @@ b[data-odo] .d .strip span{display:block}
   snd.addEventListener('click',function(){on=!on;snd.setAttribute('aria-pressed',on);snd.setAttribute('aria-label',on?'Turn sound off':'Turn sound on');
     if(pl){if(on){pl.setVolume(1).catch(function(){});pl.setMuted(false).catch(function(){})}else pl.setMuted(true).catch(function(){})}});
   play.addEventListener('click',function(){
-    if(f)f.remove();box.classList.add('full');box.style.aspectRatio='16/9';
+    if(f)f.remove();box.classList.add('full');
     f=document.createElement('iframe');f.title='Cinematic listing film';f.setAttribute('allow','autoplay; fullscreen; picture-in-picture');f.allowFullscreen=true;
     f.src=base+'&autoplay=1&muted=0&controls=1';f.className='ready';box.appendChild(f);pl=null;
   });
