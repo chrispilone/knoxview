@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Premium Package Example · Knox View Real Estate Media</title>
-<meta name="description" content="See everything the Knox View Premium package delivers: video, a Zillow 3D Home tour, interior, exterior and drone photos, a 2D floor plan and a property website.">
+<meta name="description" content="See everything the Knox View Premium package delivers: a cinematic agent-on-camera video, a Zillow 3D Home tour, interior, exterior and drone photos, a 2D floor plan and a property website.">
 <meta name="theme-color" content="#1d3250">
 <link rel="canonical" href="https://knoxview.com/examples/premium">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Knox View Real Estate Media">
 <meta property="og:title" content="Premium Package Example | Knox View Real Estate Media">
-<meta property="og:description" content="Video, 3D tour, photos, drone, floor plan and a property website from one real Premium listing.">
+<meta property="og:description" content="Cinematic agent video, 3D tour, photos, drone, floor plan and a property website from one real Premium listing.">
 <meta property="og:url" content="https://knoxview.com/examples/premium">
 <meta property="og:image" content="https://knoxview.com/img/examples/premium/twilight.jpg">
 <meta property="og:image:width" content="1800">
@@ -535,6 +535,7 @@ body.locked{overflow:hidden}
 .tour-alt{text-align:center;margin-top:16px;font-size:.85rem}
 .tour-alt a{color:var(--slate);font-weight:600}
 @media (max-width:700px){.tour{aspect-ratio:4/5;border-radius:16px}}
+.vcopy .ticks li{text-align:left}
 </style>
 </head>
 <body>
@@ -580,7 +581,7 @@ body.locked{overflow:hidden}
       <h1>See the Premium package <em>in action</em></h1>
       <p>Every photo, video, 3D tour and floor plan below came from a single Premium shoot.</p>
       <ul class="jump" aria-label="Jump to">
-        <li><a href="#video">Highlight video</a></li>
+        <li><a href="#video">Premium video</a></li>
         <li><a href="#tour">3D tour</a></li>
         <li><a href="#photos">Photos</a></li>
         <li><a href="#drone">Drone</a></li>
@@ -600,9 +601,16 @@ body.locked{overflow:hidden}
         <div class="phone" id="reel" data-vid="1216825550"><div class="bezel"><div class="screen" style="background-image:url('/img/examples/premium/reel-poster.jpg')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
       </div>
       <div class="vcopy rv">
-        <span class="eyebrow">Highlight video</span>
-        <h2>Made for <em class="ac">the scroll</em></h2>
-        <p class="one">A vertical walkthrough reel, optimized for social media.</p>
+        <span class="eyebrow">Premium video</span>
+        <h2>Your listing, <em class="ac">your story</em></h2>
+        <p class="one">Cinematic storytelling with you on camera. The home is the setting, but you&rsquo;re the face buyers remember and the brand sellers call next.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg>Story-driven, cinematic edit</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg>You on camera, introducing the home</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg>Your brand, front and center</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg>Vertical, built for Reels, TikTok and Shorts</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9"/></svg>Delivered branded and unbranded for the MLS</li>
+        </ul>
         <p class="tip">Tap the speaker to turn the sound on.</p>
       </div>
     </div>
@@ -713,7 +721,7 @@ body.locked{overflow:hidden}
         <span class="eyebrow c">Also in every Premium package</span>
         <div class="also-grid">
           <div><b>Virtual twilights</b><p>Daytime exteriors turned into glowing dusk shots that stop the scroll, like the cover photo above.</p></div>
-          <div><b>Agent on camera</b><p>Optional. Step into the video and introduce the home yourself.</p></div>
+          <div><b>Agent on camera</b><p>Optional, but it&rsquo;s what makes the Premium video yours. Prefer to stay behind the camera? We&rsquo;ll let the home tell the story.</p></div>
           <div><b>Location graphics</b><p>Branded maps and drone shots that show buyers exactly where the home sits, like the pinned aerial above.</p></div>
           <div><b>Marketing kit</b><p>Ready-to-post graphics and flyers built from your listing media.</p></div>
         </div>
@@ -780,13 +788,13 @@ body.locked{overflow:hidden}
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 (function(){
-  /* highlight video in the phone */
+  /* premium video in the phone */
   var ph=document.getElementById('reel');if(!ph)return;
   var btn=ph.querySelector('.snd'),pl=null,f=null,on=false;
   function load(){
     if(f)return;f=document.createElement('iframe');
     f.src='https://player.vimeo.com/video/'+ph.getAttribute('data-vid')+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1';
-    f.title='Premium package highlight video';f.tabIndex=-1;f.setAttribute('allow','autoplay; picture-in-picture');
+    f.title='Premium package agent listing video';f.tabIndex=-1;f.setAttribute('allow','autoplay; picture-in-picture');
     ph.querySelector('.screen').appendChild(f);
     if(window.Vimeo){pl=new Vimeo.Player(f);pl.on('play',function(){f.classList.add('ready')});pl.ready().then(function(){setTimeout(function(){f.classList.add('ready')},300)}).catch(function(){})}
     else setTimeout(function(){f.classList.add('ready')},1500);
