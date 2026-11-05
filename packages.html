@@ -390,6 +390,17 @@ body.locked{overflow:hidden}
 @media (max-width:600px){.cmp-drop{margin-top:44px}.cmp-drop>summary{padding:18px 18px}.cd-t{font-size:1.3rem}.cmp-drop .cmp-wrap{padding:2px 10px 16px}}
 .cmp-tools:not(:has(.cmp-hint:not([style*="none"]))){margin:0}
 @media (min-width:761px){.cmp-tools{display:none}}
+.pk.four{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.pk.four .card .pr{font-size:3.4rem}
+.pk.four .card ul{padding:24px 24px 28px}
+.pk.four .card .btn,.pk.four .card .ex{margin-inline:22px}
+.pk.four .card .btn{white-space:nowrap;letter-spacing:.14em;padding-inline:10px}
+.card li .ct{font-style:normal;color:var(--ink-soft);font-size:.85em}
+.card.top li .ct{color:var(--accent)}
+.pk.solo{grid-template-columns:minmax(0,1fr);max-width:640px;margin-inline:auto}
+@media (max-width:1100px){.pk.four{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px;margin-inline:auto}}
+@media (max-width:640px){.pk.four{grid-template-columns:1fr;max-width:460px}}
+@media (max-width:900px){.pk.solo{max-width:460px}.card.lux ul{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -444,49 +455,66 @@ body.locked{overflow:hidden}
         <span class="eyebrow c">Packages</span>
         <h2>Listing media <em class="ac">packages</em></h2>
       </div>
-      <div class="pk">
+      <div class="pk four">
         <article class="card rv">
           <h3 class="nm">BASE</h3>
           <span class="sub">List it</span>
           <div class="pr">$295</div>
           <ul>
-            <li>Interior and exterior photos</li>
+            <li>Interior and exterior photos <em class="ct">(30+)</em></li>
             <li>Drone photos</li>
             <li>2D floor plan</li>
+            <li>Virtual twilight</li>
             <li>Property website</li>
             <li>Marketing kit</li>
           </ul>
           <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Base</a>
           <a class="ex" href="#" data-example="base"><span>View example</span></a>
         </article>
-        <article class="card pop rv">
-          <h3 class="nm">PRO</h3>
-          <span class="flag">Most popular</span>
-          <span class="sub">Market it</span>
-          <div class="pr">$525</div>
+        <article class="card rv">
+          <h3 class="nm">ZILLOW 3D</h3>
+          <span class="sub">Tour it</span>
+          <div class="pr">$445</div>
           <ul>
-            <li>Interior and exterior photos</li>
+            <li>Interior and exterior photos <em class="ct">(30+)</em></li>
             <li>Drone photos</li>
-            <li>Highlight video</li>
+            <li>Zillow 3D Home tour</li>
             <li>2D floor plan</li>
             <li>Virtual twilight</li>
             <li>Property website</li>
             <li>Marketing kit</li>
           </ul>
-          <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Pro</a>
-          <a class="ex" href="/examples/pro" data-example="pro"><span>View example</span></a>
+          <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Zillow 3D</a>
+          <a class="ex" href="#" data-example="zillow-3d"><span>View example</span></a>
+        </article>
+        <article class="card rv">
+          <h3 class="nm">SOCIAL MEDIA</h3>
+          <span class="sub">Market it</span>
+          <div class="pr">$495</div>
+          <ul>
+            <li>Interior and exterior photos <em class="ct">(30+)</em></li>
+            <li>Drone photos</li>
+            <li>Social media video</li>
+            <li>2D floor plan</li>
+            <li>Virtual twilight</li>
+            <li>Property website</li>
+            <li>Marketing kit</li>
+          </ul>
+          <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Social Media</a>
+          <a class="ex" href="/examples/pro" data-example="social-media"><span>View example</span></a>
         </article>
         <article class="card top rv">
           <h3 class="nm">PREMIUM</h3>
-          <span class="sub">Showcase it</span>
+          <span class="flag">Most complete</span>
+          <span class="sub">The works</span>
           <div class="pr">$745</div>
           <ul>
-            <li>Interior and exterior photos</li>
+            <li>Interior and exterior photos <em class="ct">(30+)</em></li>
             <li>Drone photos</li>
             <li>Premium video</li>
             <li>Agent on camera</li>
             <li>Zillow 3D Home tour</li>
-            <li>Upgraded 2D floor plan</li>
+            <li>2D floor plan</li>
             <li>Virtual twilights</li>
             <li>Location graphics</li>
             <li>Property website</li>
@@ -498,23 +526,7 @@ body.locked{overflow:hidden}
       </div>
 
       <div id="specialty" style="height:28px"></div>
-      <div class="pk two">
-        <article class="card rv">
-          <h3 class="nm">ZILLOW SHOWCASE</h3>
-          <span class="sub">Everything Zillow Showcase requires</span>
-          <div class="pr">$445</div>
-          <ul>
-            <li>Interior and exterior photos</li>
-            <li>Drone photos</li>
-            <li>Zillow 3D Home tour</li>
-            <li>Zillow interactive floor plan</li>
-            <li>Virtual twilight</li>
-            <li>Property website</li>
-            <li>Marketing kit</li>
-          </ul>
-          <a class="btn" href="https://book.knoxview.com" target="_blank" rel="noopener">Book Zillow Showcase</a>
-          <a class="ex" href="#" data-example="zillow-showcase"><span>View example</span></a>
-        </article>
+      <div class="pk solo">
         <article class="card top lux rv">
           <h3 class="nm">LUXURY</h3>
           <span class="flag">All-inclusive</span>
@@ -537,7 +549,7 @@ body.locked{overflow:hidden}
         </article>
       </div>
 
-      <p class="note" style="margin-top:28px">Homes over 3,500 sq ft or with ADUs or other structures may require additional fees, which include extra photos.</p>
+      <p class="note" style="margin-top:28px">Every package covers homes up to 3,500 sq ft. Over 3,500 sq ft or with an ADU / other structures: <b>+$75</b>, which includes additional photos.</p>
 
       <div class="alc" id="alacarte">
         <div class="head rv" style="margin-bottom:40px">
