@@ -118,6 +118,10 @@ a.pi:hover .pex svg{transform:translateX(3px)}
 .save{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:22px;padding:13px;background:#fff;border:1px solid var(--haze2);border-radius:16px;font-size:.82rem;font-weight:600;color:var(--ink);transition:transform .15s,background .15s}
 .save:hover{background:#f7f9fc}.save:active{transform:scale(.98);background:#f7f9fc}
 .save svg{width:20px;height:20px;fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.revs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.revs .stars{margin-top:12px;color:var(--ink);white-space:nowrap}
+@media (max-width:420px){.revs{gap:6px}.revs .stars{padding:6px 10px;gap:5px;font-size:.72rem}.revs .stars b{font-size:.78rem;letter-spacing:0}.revs .stars svg{width:13px;height:13px}}
+.stars svg{width:15px;height:15px;fill:none;stroke:var(--ink);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 </style>
 </head>
 <body>
@@ -132,7 +136,10 @@ a.pi:hover .pex svg{transform:translateX(3px)}
     <h1>Knox View Real Estate Media</h1>
     <p class="tag">Media that moves homes.<br><em>Marketing that builds agents.</em></p>
     <p class="area"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Knoxville &amp; East Tennessee</p>
-    <a class="stars" href="https://maps.google.com/?cid=16231784421992026918" target="_blank" rel="noopener"><b>★★★★★</b>5.0 on Google</a>
+    <div class="revs">
+      <a class="stars" href="https://maps.google.com/?cid=16231784421992026918" target="_blank" rel="noopener"><b>★★★★★</b>5.0 on Google</a>
+      <a class="stars" id="leaveReview" href="https://maps.google.com/?cid=16231784421992026918" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10.5-10.5a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>Leave us a review</a>
+    </div>
   </header>
 
   <main class="wrap">
