@@ -103,6 +103,11 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .foot .tw{font-size:.74rem;color:#8a98ab;line-height:1.5;padding:0 12px}
 @media (min-width:481px){.page{margin-top:24px;margin-bottom:24px;border-radius:28px;overflow:hidden;min-height:0;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}.ban{border-radius:0 0 28px 28px}}
 @media (prefers-reduced-motion:reduce){.ban img{transition:none}}
+a.pi{display:block;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.pex{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--slate)}
+.pex svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+a.pi:hover .pex,a.pi:active .pex{color:var(--ink)}
+a.pi:hover .pex svg{transform:translateX(3px)}
 </style>
 </head>
 <body>
@@ -137,10 +142,10 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
       <details class="drop">
         <summary class="row"><span class="ri"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="rt"><b>Packages &amp; pricing</b><small>See what&rsquo;s included and what it costs</small></span><span class="rc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></summary>
         <div class="pk">
-          <div class="pi"><div class="ph"><b>Base</b><span class="pp">$295</span></div><p>Photos, drone, floor plan &amp; virtual twilight</p></div>
+          <a class="pi" href="/examples/base"><div class="ph"><b>Base</b><span class="pp">$295</span></div><p>Photos, drone, floor plan &amp; virtual twilight</p><span class="pex">View example <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
           <div class="pi"><div class="ph"><b>Zillow 3D</b><span class="pp">$445</span></div><p>Photos, drone &amp; Zillow 3D tour</p></div>
-          <div class="pi"><div class="ph"><b>Social Media</b><span class="pp">$495</span></div><p>Photos, drone &amp; social media video</p></div>
-          <div class="pi"><div class="ph"><b>Premium</b><span class="pp">$745</span></div><p>Premium video, Zillow 3D tour &amp; much more</p></div>
+          <a class="pi" href="/examples/pro"><div class="ph"><b>Social Media</b><span class="pp">$495</span></div><p>Photos, drone &amp; social media video</p><span class="pex">View example <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a class="pi" href="/examples/premium"><div class="ph"><b>Premium</b><span class="pp">$745</span></div><p>Premium video, Zillow 3D tour &amp; much more</p><span class="pex">View example <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
           <div class="pi"><div class="ph"><b>Luxury</b><span class="pp">$1,395</span></div><p>Everything we offer, all in one</p></div>
           <a class="pk-all" href="/packages">See full package details <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
