@@ -142,26 +142,57 @@ details.job ul{margin:0;padding-left:18px;display:grid;gap:4px}
 .ty p,.iv p{color:var(--soft);font-weight:300}
 .ok-badge{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#9be3bd;background:rgba(46,160,105,.16);border:1px solid rgba(155,227,189,.25);border-radius:999px;padding:7px 14px}
 .ok-badge::before{content:"✓"}
-.iv .ok-badge{justify-self:start}
-.iv{justify-items:stretch}
-.iv-prog{display:flex;gap:8px}
-.iv-prog i{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.12)}
+.iv-prog{display:flex;gap:8px;width:100%}
+.iv-prog i{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.14)}
 .iv-prog i.on{background:var(--accent)}.iv-prog i.done{background:var(--text)}
-.iv-q{font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2rem);line-height:1.2}
-.iv-meta{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
-.stage{position:relative;width:100%;max-width:560px;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#060b14;margin:0 auto;border:1px solid var(--line)}
-.stage video{width:100%;height:100%;object-fit:cover;display:block;background:#060b14}
-.stage video.mirror{transform:scaleX(-1)}
-.stage .ovl{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-family:var(--display);font-size:5rem;background:rgba(6,11,20,.35);pointer-events:none}
-.stage .rec{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;background:rgba(6,11,20,.7);color:#fff;font-size:.8rem;font-weight:700;border-radius:999px;padding:6px 12px}
-.stage .rec::before{content:"";width:9px;height:9px;border-radius:50%;background:#e74c3c;animation:blink 1s infinite}
-@keyframes blink{50%{opacity:.25}}
-.stage .bar{position:absolute;left:0;bottom:0;height:4px;background:#e74c3c;width:0}
-.iv-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.upbar{height:6px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden;max-width:560px;width:100%;margin:0 auto}
-.upbar i{display:block;height:100%;width:0;background:var(--text);transition:width .2s}
-.tips{display:grid;gap:8px;margin:0;padding-left:20px;color:var(--soft);font-weight:300}
+.tips{display:grid;gap:10px;margin:0;padding:0;list-style:none;color:var(--soft);font-weight:300}
+.tips li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.tips li span:first-child{font-size:1.15rem;line-height:1.4}
+.iv-note{font-size:.88rem;background:rgba(140,166,204,.12);border:1px solid rgba(140,166,204,.3);border-radius:12px;padding:12px 14px;color:var(--text)!important}
 .iv-center{text-align:center;color:var(--soft)}
+.qlist{display:grid;gap:8px;width:100%;margin:0;padding:0;list-style:none}
+.qlist li{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;background:var(--field);border:1px solid var(--line);font-size:.95rem;font-weight:300;color:var(--soft)}
+.qlist li b{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;border:1px solid var(--accent);color:var(--accent)}
+.qlist li.done{color:var(--text)}
+.qlist li.done b{background:#2ea069;border-color:#2ea069;color:#fff}
+
+/* full-screen recorder (phone-camera style) */
+.rec-open{overflow:hidden}
+.rs{position:fixed;inset:0;z-index:100;background:#05080e;color:#fff;display:flex;justify-content:center}
+.rs-in{position:relative;width:100%;max-width:560px;height:100%;height:100dvh;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 12px) 14px calc(env(safe-area-inset-bottom,0px) + 14px)}
+.rs-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.rs-top .iv-prog{flex:1}
+.rs-x{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:1.05rem;cursor:pointer}
+.rs-q{font-family:var(--display);font-size:clamp(1.35rem,5.2vw,1.75rem);line-height:1.2;margin:2px 4px 4px}
+.rs-meta{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 4px 10px}
+.rs-cam{position:relative;flex:1;min-height:0;border-radius:22px;overflow:hidden;background:#0b1220}
+.rs-cam video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#0b1220}
+.rs-cam video.mirror{transform:scaleX(-1)}
+.rs-cam video.fit{object-fit:contain}
+.rs-ovl{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-size:7rem;background:rgba(5,8,14,.35);pointer-events:none}
+.rs-time{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:rgba(5,8,14,.65);font-size:.85rem;font-weight:700;border-radius:999px;padding:6px 14px;font-variant-numeric:tabular-nums}
+.rs-time::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff453a;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.25}}
+.rs-bar{position:absolute;left:0;bottom:0;height:5px;background:#ff453a;width:0}
+.rs-hint{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:.85rem;color:rgba(255,255,255,.85);text-shadow:0 1px 6px rgba(0,0,0,.6);padding:0 16px}
+.rs-ctl{display:flex;align-items:center;justify-content:center;gap:14px;padding-top:16px;min-height:96px}
+.rs-rec{width:78px;height:78px;border-radius:50%;border:4px solid #fff;background:transparent;display:grid;place-items:center;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent}
+.rs-rec i{display:block;width:60px;height:60px;border-radius:50%;background:#ff453a;transition:all .2s}
+.rs-rec.stop i{width:30px;height:30px;border-radius:7px}
+.rs-rec[disabled]{opacity:.4}
+.rs-btn{flex:1;max-width:240px;height:54px;border-radius:999px;border:0;font:inherit;font-weight:700;font-size:.98rem;cursor:pointer}
+.rs-btn.pri{background:#fff;color:var(--ink)}
+.rs-btn.sec{background:rgba(255,255,255,.14);color:#fff}
+.rs-btn[disabled]{opacity:.5}
+.rs-up{width:100%;max-width:360px;display:grid;gap:10px;text-align:center;font-size:.9rem}
+.rs-up .bar{height:6px;border-radius:3px;background:rgba(255,255,255,.15);overflow:hidden}
+.rs-up .bar i{display:block;height:100%;width:0;background:#fff;transition:width .2s}
+.rs-err{color:#ff8a80;font-size:.9rem;text-align:center;margin-top:8px;min-height:0}
+.rs-err:empty{display:none}
+.rs-pick{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:14px;padding:24px;text-align:center}
+.rs-pick p{color:rgba(255,255,255,.8);font-size:.95rem}
+.rs-pick label{cursor:pointer}
+.rs-pick input{display:none}
 
 footer{text-align:center;padding:30px 20px 46px;color:var(--mute);font-size:.78rem;display:grid;gap:12px;justify-items:center}
 footer .logo{width:90px;opacity:.75}
@@ -294,9 +325,9 @@ footer .logo{width:90px;opacity:.75}
         <div class="glass ty" id="apDone" hidden>
           <span class="ok-badge">Application submitted</span>
           <h2>Thank you. You're in.</h2>
-          <p>Next step: a short <b>video interview</b>. You'll answer a few quick questions on camera, on your own time, from your phone or computer.</p>
+          <p>Last step: a short <b>video interview</b>. Answer 3 quick questions on camera, right here on your phone or computer. It takes about 5 minutes.</p>
           <p id="apMail">We also emailed you a link so you can come back to it later. If you don't see it, check your spam folder.</p>
-          <a class="btn" id="ivStart" href="#" role="button">Start my video interview</a>
+          <a class="btn" id="ivStart" href="#" role="button">Start my video interview →</a>
         </div>
 
         
@@ -387,138 +418,225 @@ footer .logo{width:90px;opacity:.75}
   $('ivStart').addEventListener('click', function(e){ if (this.dataset.ext) return; e.preventDefault(); $('apDone').hidden = true; startInterview(token); });
 
   /* ---------------- video interview ---------------- */
-  var IV = { token:null, qs:[], i:0, stream:null, rec:null, chunks:[], mime:'', blob:null, secs:0, timer:null, fallback:false, busy:false };
+  // Built for phones first: a full-screen, camera-app style recorder with the question on screen.
+  // Falls back to the phone's own camera app (file input with capture) when in-browser recording isn't available.
+  var IV = { token:null, qs:[], i:0, first:'', stream:null, rec:null, chunks:[], mime:'', blob:null, secs:0, timer:null, fallback:false, busy:false, lock:null, url:null };
   var box = function(){ return $('iv'); };
+  var UA = navigator.userAgent || '';
+  var IN_APP = /Instagram|FBAN|FBAV|FB_IAB|LinkedInApp|Snapchat|TikTok|musical_ly|Line\/|GSA\/|Twitter|Pinterest/i.test(UA);
+  var IOS = /iPhone|iPad|iPod/i.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   function pickMime(){
-    if (!window.MediaRecorder || !MediaRecorder.isTypeSupported) return '';
-    var c = ['video/mp4;codecs=avc1,mp4a', 'video/mp4', 'video/webm;codecs=vp8,opus', 'video/webm'];
+    if (!window.MediaRecorder) return '';
+    if (!MediaRecorder.isTypeSupported) return 'video/mp4';
+    var c = ['video/mp4;codecs=avc1,mp4a', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp8,opus', 'video/webm'];
     for (var k = 0; k < c.length; k++) if (MediaRecorder.isTypeSupported(c[k])) return c[k];
     return '';
   }
   var fmt = function(s){ s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); };
   function prog(){ return '<div class="iv-prog">' + IV.qs.map(function(q, k){ return '<i class="' + (q.done ? 'done' : k === IV.i ? 'on' : '') + '"></i>'; }).join('') + '</div>'; }
+  function wake(on){
+    try {
+      if (on && navigator.wakeLock && !IV.lock) navigator.wakeLock.request('screen').then(function(l){ IV.lock = l; }).catch(function(){});
+      if (!on && IV.lock) { IV.lock.release(); IV.lock = null; }
+    } catch (_) {}
+  }
+  function freeUrl(){ if (IV.url) { URL.revokeObjectURL(IV.url); IV.url = null; } }
 
   function startInterview(t){
     IV.token = t; $('iv').hidden = false;
     box().innerHTML = '<p class="iv-center">Loading your interview…</p>';
     api('interview', { token: t }).then(function(r){
       IV.qs = r.questions || []; IV.first = r.first_name || '';
-      var next = IV.qs.findIndex(function(q){ return !q.done; });
-      if (r.completed || next < 0) return showFinished();
-      IV.i = next; showIntro();
+      if (r.completed || !IV.qs.some(function(q){ return !q.done; })) return showFinished();
+      IV.i = IV.qs.findIndex(function(q){ return !q.done; }); showIntro();
     }).catch(function(err){ box().innerHTML = '<p class="ferr">' + esc(err.message) + '</p><p class="iv-center">Questions? Email <a href="mailto:chris@knoxview.com">chris@knoxview.com</a>.</p>'; });
   }
+
   function showIntro(){
     IV.mime = pickMime();
     IV.fallback = !(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && IV.mime);
     var started = IV.qs.some(function(q){ return q.done; });
-    box().innerHTML = prog() +
-      '<h2>' + (started ? 'Welcome back' : 'Video interview') + (IV.first ? ', ' + esc(IV.first) : '') + '</h2>' +
-      '<p style="color:var(--soft)">' + (started ? 'Pick up right where you left off.' : 'Just ' + IV.qs.length + ' quick questions. There are no trick questions; we just want to meet the real you.') + '</p>' +
-      '<ul class="tips"><li>Find a quiet spot with light on your face (facing a window works great).</li>' +
-      '<li>Each answer has a time limit, shown with each question. Shorter is fine!</li>' +
-      '<li>You can watch each answer and re-record it before you send it.</li>' +
-      (IV.fallback ? '<li>Your browser can\'t record here, so you\'ll record each answer with your camera app and upload it.</li>' : '') + '</ul>' +
-      '<div class="iv-btns"><button class="btn" id="ivGo" type="button">' + (IV.fallback ? 'Continue' : 'Turn on my camera') + '</button></div>' +
-      '<p class="ferr" id="ivErr"></p>';
-    $('ivGo').onclick = function(){
-      if (IV.fallback) return showQuestion();
-      $('ivGo').disabled = true;
-      navigator.mediaDevices.getUserMedia({ video:{ facingMode:'user', width:{ ideal:1280 }, height:{ ideal:720 } }, audio:{ echoCancellation:true, noiseSuppression:true } })
-        .then(function(s){ IV.stream = s; showQuestion(); })
-        .catch(function(){ $('ivGo').disabled = false;
-          $('ivErr').innerHTML = 'We couldn\'t turn on your camera and microphone. Allow access when your browser asks (check the camera icon in the address bar), then try again.' +
-            ' <a href="#" id="ivUp">Or upload videos instead</a>.';
-          $('ivUp').onclick = function(e){ e.preventDefault(); IV.fallback = true; showQuestion(); }; });
+    var total = IV.qs.reduce(function(a, q){ return a + (q.seconds || 60); }, 0);
+    box().innerHTML =
+      '<span class="eyebrow">Video interview</span>' +
+      '<h2>' + (started ? 'Welcome back' : 'Let\'s meet you') + (IV.first ? ', ' + esc(IV.first) : '') + '!</h2>' +
+      '<p>' + (started ? 'Pick up right where you left off.' : IV.qs.length + ' quick questions, about ' + Math.max(1, Math.round(total / 60)) + ' minutes of talking total. There are no trick questions. We just want to see the real you.') + '</p>' +
+      '<ol class="qlist">' + IV.qs.map(function(q, k){ return '<li class="' + (q.done ? 'done' : '') + '"><b>' + (q.done ? '✓' : k + 1) + '</b><span>' + esc(q.q) + '</span></li>'; }).join('') + '</ol>' +
+      '<ul class="tips">' +
+        '<li><span>💡</span><span>Face a window or a lamp so we can see you clearly.</span></li>' +
+        '<li><span>🤫</span><span>Find a quiet spot. Hold your phone at eye level (portrait is perfect).</span></li>' +
+        '<li><span>🔁</span><span>Watch each answer before sending it, and re-record as many times as you like.</span></li>' +
+      '</ul>' +
+      (IN_APP ? '<p class="iv-note">Opened this from Instagram, Facebook or another app? For the smoothest recording, tap <b>•••</b> and choose <b>Open in ' + (IOS ? 'Safari' : 'browser') + '</b>. You can also keep going here.</p>' : '') +
+      '<button class="btn" id="ivGo" type="button">' + (started ? 'Continue' : 'I\'m ready') + '</button>' +
+      '<p class="ferr" id="ivErr"></p>' +
+      '<p style="font-size:.85rem">Need to stop? Your progress is saved. Use the link in your email to come back anytime.</p>';
+    $('ivGo').onclick = openRecorder;
+  }
+
+  /* ----- full-screen recorder ----- */
+  function openRecorder(){
+    var go = $('ivGo'); if (go) go.disabled = true;
+    var done = function(){ document.body.classList.add('rec-open'); wake(true); renderShell(); showQuestion(); };
+    if (IV.fallback) return done();
+    getCam().then(done).catch(function(){
+      if (go) go.disabled = false;
+      $('ivErr').innerHTML = 'We couldn\'t turn on your camera. ' + (IOS ? 'Tap <b>Allow</b> when Safari asks, or go to Settings › Safari › Camera and Microphone and choose Allow.' : 'Allow camera and microphone access in your browser (look for the camera icon in the address bar).') +
+        ' <br><a href="#" id="ivUseApp">Or record with your camera app instead</a>.';
+      $('ivUseApp').onclick = function(e){ e.preventDefault(); IV.fallback = true; done(); };
+    });
+  }
+  function getCam(){
+    if (IV.stream && IV.stream.getTracks().every(function(t){ return t.readyState === 'live'; })) return Promise.resolve(IV.stream);
+    return navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 }, frameRate: { ideal: 30, max: 30 } },
+      audio: { echoCancellation: true, noiseSuppression: true },
+    }).then(function(s){ IV.stream = s; return s; });
+  }
+  function closeRecorder(){
+    clearInterval(IV.timer); freeUrl();
+    if (IV.rec && IV.rec.state === 'recording') { IV.rec.onstop = null; IV.rec.stop(); }
+    if (IV.stream) { IV.stream.getTracks().forEach(function(t){ t.stop(); }); IV.stream = null; }
+    var s = $('rs'); if (s) s.remove();
+    document.body.classList.remove('rec-open'); wake(false);
+  }
+  function renderShell(){
+    var s = document.createElement('div'); s.className = 'rs'; s.id = 'rs';
+    s.innerHTML = '<div class="rs-in"><div class="rs-top"><span id="rsProg" style="flex:1"></span><button class="rs-x" id="rsX" type="button" aria-label="Close">✕</button></div>' +
+      '<div class="rs-meta" id="rsMeta"></div><div class="rs-q" id="rsQ"></div>' +
+      '<div class="rs-cam" id="rsCam"></div><div class="rs-ctl" id="rsCtl"></div><div class="rs-err" id="rsErr"></div></div>';
+    document.body.appendChild(s);
+    $('rsX').onclick = function(){
+      if (IV.busy) return;
+      if (IV.rec && IV.rec.state === 'recording' && !confirm('Stop recording and close? This answer won\'t be saved.')) return;
+      closeRecorder(); showIntro();
     };
   }
-  function qHead(){ var q = IV.qs[IV.i]; return prog() + '<div class="iv-meta">Question ' + (IV.i + 1) + ' of ' + IV.qs.length + ' · up to ' + fmt(q.seconds) + '</div><div class="iv-q">' + esc(q.q) + '</div>'; }
+  function header(){
+    var q = IV.qs[IV.i];
+    $('rsProg').innerHTML = prog();
+    $('rsMeta').textContent = 'Question ' + (IV.i + 1) + ' of ' + IV.qs.length + ' · up to ' + fmt(q.seconds);
+    $('rsQ').textContent = q.q;
+    $('rsErr').textContent = '';
+  }
 
   function showQuestion(){
-    IV.blob = null; IV.secs = 0;
-    if (IV.fallback) {
-      box().innerHTML = qHead() +
-        '<label class="drop" for="ivFile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>' +
-        '<span class="t"><b>Record or choose a video</b><small>Keep it under ' + fmt(IV.qs[IV.i].seconds) + ' · 50 MB max</small></span>' +
-        '<input id="ivFile" type="file" accept="video/*" capture="user"></label><p class="ferr" id="ivErr"></p>';
-      $('ivFile').onchange = function(e){
-        var f = e.target.files[0]; if (!f) return;
-        var t = (f.type || '').split(';')[0] || 'video/mp4';
-        if (['video/mp4','video/webm','video/quicktime'].indexOf(t) < 0) { $('ivErr').textContent = 'Please choose an MP4, MOV or WebM video.'; return; }
-        if (f.size > 50 * 1024 * 1024) { $('ivErr').textContent = 'That video is over 50 MB. Try a shorter take.'; return; }
-        IV.blob = new Blob([f], { type: t });
-        var probe = document.createElement('video'); probe.preload = 'metadata';
-        probe.onloadedmetadata = function(){ IV.secs = isFinite(probe.duration) ? probe.duration : 0; };
-        probe.src = URL.createObjectURL(IV.blob);
-        showReview();
-      };
-      return;
-    }
-    box().innerHTML = qHead() +
-      '<div class="stage"><video id="ivCam" class="mirror" autoplay muted playsinline></video><div class="ovl" id="ivOvl" hidden></div><div class="rec" id="ivRec" hidden>0:00</div><div class="bar" id="ivBar"></div></div>' +
-      '<div class="iv-btns"><button class="btn" id="ivRecBtn" type="button">● Start recording</button></div><p class="ferr" id="ivErr"></p>';
+    IV.blob = null; IV.secs = 0; freeUrl(); header();
+    if (IV.fallback) return showPicker();
+    $('rsCam').innerHTML = '<video id="ivCam" class="mirror" autoplay muted playsinline></video><div class="rs-hint">Tap the red button when you\'re ready. You\'ll get a 3-second countdown.</div>';
     var v = $('ivCam'); v.srcObject = IV.stream; v.play().catch(function(){});
-    $('ivRecBtn').onclick = countdown;
+    $('rsCtl').innerHTML = '<button class="rs-rec" id="ivRecBtn" type="button" aria-label="Start recording"><i></i></button>';
+    $('ivRecBtn').onclick = function(){
+      getCam().then(function(){ v.srcObject = IV.stream; v.play().catch(function(){}); countdown(); })
+        .catch(function(){ $('rsErr').textContent = 'Your camera turned off. Close this and tap Continue to turn it back on.'; });
+    };
   }
   function countdown(){
-    var n = 3, o = $('ivOvl'), b = $('ivRecBtn'); b.disabled = true; o.hidden = false; o.textContent = n;
-    var t = setInterval(function(){ n--; if (n > 0) { o.textContent = n; return; } clearInterval(t); o.hidden = true; startRec(); }, 1000);
+    var b = $('ivRecBtn'); b.disabled = true;
+    var hint = $('rsCam').querySelector('.rs-hint'); if (hint) hint.remove();
+    var o = document.createElement('div'); o.className = 'rs-ovl'; $('rsCam').appendChild(o);
+    var n = 3; o.textContent = n;
+    var t = setInterval(function(){ n--; if (n > 0) { o.textContent = n; return; } clearInterval(t); o.remove(); startRec(); }, 1000);
   }
   function startRec(){
     var lim = IV.qs[IV.i].seconds, b = $('ivRecBtn');
     IV.chunks = [];
     try { IV.rec = new MediaRecorder(IV.stream, { mimeType: IV.mime, videoBitsPerSecond: 1500000, audioBitsPerSecond: 96000 }); }
-    catch (_) { IV.rec = new MediaRecorder(IV.stream); }
+    catch (_) { try { IV.rec = new MediaRecorder(IV.stream, { mimeType: IV.mime }); } catch (__) { IV.rec = new MediaRecorder(IV.stream); } }
     IV.rec.ondataavailable = function(e){ if (e.data && e.data.size) IV.chunks.push(e.data); };
     IV.rec.onstop = function(){
       clearInterval(IV.timer);
-      var type = (IV.rec.mimeType || IV.mime || 'video/webm').split(';')[0];
+      var type = (IV.rec.mimeType || IV.mime || 'video/mp4').split(';')[0];
       IV.blob = new Blob(IV.chunks, { type: type });
+      if (!IV.blob.size) { $('rsErr').textContent = 'That recording came out empty. Please try again.'; return showQuestion(); }
       showReview();
     };
-    var t0 = Date.now(); IV.rec.start(1000);
-    $('ivRec').hidden = false; b.disabled = false; b.textContent = '■ Stop recording';
-    b.onclick = function(){ if (IV.rec.state === 'recording') IV.rec.stop(); };
+    var t0 = Date.now();
+    // Safari records most reliably without a timeslice; Chrome/Firefox get 1s chunks
+    if (/mp4/.test(IV.mime) && IOS) IV.rec.start(); else IV.rec.start(1000);
+    var cam = $('rsCam');
+    cam.insertAdjacentHTML('beforeend', '<div class="rs-time" id="rsTime">0:00 / ' + fmt(lim) + '</div><div class="rs-bar" id="rsBar"></div>');
+    b.disabled = false; b.classList.add('stop'); b.setAttribute('aria-label', 'Stop recording');
+    b.onclick = function(){ if (IV.rec.state === 'recording' && IV.secs >= 1) IV.rec.stop(); };
     IV.timer = setInterval(function(){
       IV.secs = (Date.now() - t0) / 1000;
-      var r = $('ivRec'), bar = $('ivBar'); if (!r) return clearInterval(IV.timer);
-      r.textContent = fmt(IV.secs) + ' / ' + fmt(lim);
+      var tm = $('rsTime'), bar = $('rsBar'); if (!tm) return clearInterval(IV.timer);
+      tm.textContent = fmt(IV.secs) + ' / ' + fmt(lim);
       bar.style.width = Math.min(100, IV.secs / lim * 100) + '%';
       if (IV.secs >= lim && IV.rec.state === 'recording') IV.rec.stop();
-    }, 250);
+    }, 200);
   }
+
+  // Fallback: the phone's own camera app (or an existing video)
+  function showPicker(){
+    $('rsCam').innerHTML = '<div class="rs-pick"><p>Tap below to open your camera, record your answer (up to ' + fmt(IV.qs[IV.i].seconds) + '), then tap <b>Use Video</b>.</p>' +
+      '<label class="rs-btn pri" style="display:grid;place-items:center;width:240px">🎥 Record my answer<input id="ivFile" type="file" accept="video/*" capture="user"></label>' +
+      '<label style="color:rgba(255,255,255,.75);font-size:.9rem;text-decoration:underline">or choose a video I already recorded<input id="ivFile2" type="file" accept="video/*"></label></div>';
+    $('rsCtl').innerHTML = '';
+    var pick = function(e){
+      var f = e.target.files[0]; if (!f) return;
+      var t = (f.type || '').split(';')[0] || (/\.mov$/i.test(f.name) ? 'video/quicktime' : 'video/mp4');
+      if (['video/mp4','video/webm','video/quicktime'].indexOf(t) < 0) { $('rsErr').textContent = 'Please choose an MP4 or MOV video.'; return; }
+      if (f.size > 50 * 1024 * 1024) { $('rsErr').textContent = 'That video is over 50 MB. Please record a shorter answer.'; return; }
+      IV.blob = f.type === t ? f : new Blob([f], { type: t });
+      IV.secs = 0;
+      var probe = document.createElement('video'); probe.preload = 'metadata'; probe.muted = true;
+      probe.onloadedmetadata = function(){ IV.secs = isFinite(probe.duration) ? probe.duration : 0; };
+      probe.src = URL.createObjectURL(IV.blob);
+      showReview();
+    };
+    $('ivFile').onchange = pick; $('ivFile2').onchange = pick;
+  }
+
   function showReview(){
-    box().innerHTML = qHead() +
-      '<div class="stage"><video id="ivPlay" controls playsinline></video></div>' +
-      '<div class="iv-btns"><button class="btn ghost-l" id="ivRedo" type="button">↺ Re-record</button><button class="btn" id="ivUse" type="button">Use this answer →</button></div>' +
-      '<div class="upbar" id="ivUpbar" hidden><i></i></div><p class="ferr" id="ivErr"></p>';
-    $('ivPlay').src = URL.createObjectURL(IV.blob);
+    freeUrl(); IV.url = URL.createObjectURL(IV.blob);
+    $('rsCam').innerHTML = '<video id="ivPlay" class="fit" controls playsinline autoplay></video>';
+    var p = $('ivPlay'); p.src = IV.url;
+    $('rsCtl').innerHTML = '<button class="rs-btn sec" id="ivRedo" type="button">↺ Redo</button><button class="rs-btn pri" id="ivUse" type="button">' + (IV.qs.filter(function(q){ return !q.done; }).length === 1 ? 'Send & finish ✓' : 'Send answer →') + '</button>';
     $('ivRedo').onclick = showQuestion;
     $('ivUse').onclick = upload;
   }
+
+  function sendOnce(onp){
+    var type = IV.blob.type || 'video/mp4', ext = type === 'video/mp4' ? 'mp4' : type === 'video/quicktime' ? 'mov' : 'webm', path;
+    return api('video_url', { token: IV.token, i: IV.i, mime: type, size: IV.blob.size })
+      .then(function(r){ path = r.path; return put(r.url, IV.blob, 'answer.' + ext, onp); })
+      .then(function(){ return api('video_done', { token: IV.token, i: IV.i, path: path, seconds: IV.secs, mime: type }); });
+  }
   function upload(){
     if (IV.busy) return; IV.busy = true;
-    var use = $('ivUse'), redo = $('ivRedo'), bar = $('ivUpbar'), err = $('ivErr');
-    use.disabled = redo.disabled = true; use.textContent = 'Sending…'; bar.hidden = false; err.textContent = '';
-    var type = IV.blob.type || 'video/webm', ext = type === 'video/mp4' ? 'mp4' : type === 'video/quicktime' ? 'mov' : 'webm', path;
-    api('video_url', { token: IV.token, i: IV.i, mime: type, size: IV.blob.size })
-      .then(function(r){ path = r.path; return put(r.url, IV.blob, 'answer.' + ext, function(p){ bar.firstChild.style.width = Math.round(p * 100) + '%'; }); })
-      .then(function(){ return api('video_done', { token: IV.token, i: IV.i, path: path, seconds: IV.secs, mime: type }); })
-      .then(function(r){
-        IV.busy = false; IV.qs[IV.i].done = true;
+    var p = $('ivPlay'); if (p) p.pause();
+    $('rsErr').textContent = '';
+    $('rsCtl').innerHTML = '<div class="rs-up"><span id="rsUpT">Sending your answer…</span><div class="bar"><i id="rsUpBar"></i></div></div>';
+    var onp = function(x){ var b = $('rsUpBar'); if (b) b.style.width = Math.round(x * 100) + '%'; };
+    var attempt = 0;
+    (function tryIt(){
+      attempt++;
+      sendOnce(onp).then(function(r){
+        IV.busy = false; IV.qs[IV.i].done = true; freeUrl();
         var next = IV.qs.findIndex(function(q){ return !q.done; });
-        if (r.complete || next < 0) return showFinished();
+        if (r.complete || next < 0) { closeRecorder(); return showFinished(); }
         IV.i = next; showQuestion();
-      })
-      .catch(function(e){ IV.busy = false; err.textContent = e.message; use.disabled = redo.disabled = false; use.textContent = 'Try sending again'; bar.hidden = true; });
+      }).catch(function(e){
+        if (attempt < 3) { var t = $('rsUpT'); if (t) t.textContent = 'Connection hiccup, trying again…'; onp(0); return setTimeout(tryIt, 1500 * attempt); }
+        IV.busy = false;
+        $('rsErr').textContent = e.message + ' Make sure you have a signal or Wi-Fi.';
+        $('rsCtl').innerHTML = '<button class="rs-btn sec" id="ivRedo" type="button">↺ Redo</button><button class="rs-btn pri" id="ivUse" type="button">Try sending again</button>';
+        $('ivRedo').onclick = showQuestion; $('ivUse').onclick = upload;
+      });
+    })();
   }
+
   function showFinished(){
-    if (IV.stream) IV.stream.getTracks().forEach(function(t){ t.stop(); });
+    closeRecorder();
     $('iv').hidden = false; $('apForm').hidden = true; $('apDone').hidden = true; $('intro').hidden = true;
     box().innerHTML = '<span class="ok-badge">Video interview complete</span><h2>You\'re all set' + (IV.first ? ', ' + esc(IV.first) : '') + '!</h2>' +
-      '<p style="color:var(--soft)">Thanks for taking the time. We watch every interview, and if it looks like a fit we\'ll reach out to set up a time to meet in person.</p>' +
-      '<p style="color:var(--soft)">In the meantime, check out our work on Instagram: <a href="https://instagram.com/knoxviewmedia" target="_blank" rel="noopener" style="color:var(--text);font-weight:700">@knoxviewmedia</a></p>';
+      '<p>Thanks for taking the time. We watch every interview, and if it looks like a fit we\'ll reach out to set up a time to meet in person.</p>' +
+      '<p>In the meantime, check out our work on Instagram: <a href="https://instagram.com/knoxviewmedia" target="_blank" rel="noopener" style="color:var(--text);font-weight:700">@knoxviewmedia</a></p>';
+    $('iv').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+  window.addEventListener('pagehide', function(){ if (IV.stream) IV.stream.getTracks().forEach(function(t){ t.stop(); }); });
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'visible' && $('rs')) wake(true); });
 
   // Returning from the email link: /apply?i=<token>
   var it = new URLSearchParams(location.search).get('i');
