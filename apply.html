@@ -194,6 +194,22 @@ details.job ul{margin:0;padding-left:18px;display:grid;gap:4px}
 .rs-pick label{cursor:pointer}
 .rs-pick input{display:none}
 
+/* review your application */
+.rv-card{display:grid;gap:22px}
+.rv-card .rv-ans,.rv-card .rv-grid,.rv-card .rv-video{justify-self:stretch}
+.rv-card h2{font-size:clamp(2rem,5vw,2.6rem)}
+.rv-sub{color:var(--soft);font-weight:300;margin-top:-10px}
+.rv-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.rv-grid div{display:grid;gap:2px;min-width:0}
+.rv-grid .full{grid-column:1/-1}
+.rv-l{font-size:.64rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.rv-v{color:var(--text);font-weight:400;overflow-wrap:anywhere}
+.rv-ans{display:grid;gap:6px;padding-top:18px;border-top:1px solid var(--line)}
+.rv-ans p{color:var(--soft);font-weight:300;white-space:pre-wrap}
+.rv-q{font-size:.88rem;font-weight:600;color:var(--text)}
+.rv-video{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px;border-radius:14px;background:var(--field);border:1px solid var(--line)}
+.rv-video .ok-badge{flex:none}
+@media (max-width:640px){.rv-grid{grid-template-columns:1fr}}
 footer{text-align:center;padding:30px 20px 46px;color:var(--mute);font-size:.78rem;display:grid;gap:12px;justify-items:center}
 footer .logo{width:90px;opacity:.75}
 
@@ -630,13 +646,46 @@ footer .logo{width:90px;opacity:.75}
   function showFinished(){
     closeRecorder();
     $('iv').hidden = false; $('apForm').hidden = true; $('apDone').hidden = true; $('intro').hidden = true;
-    box().innerHTML = '<span class="ok-badge">Video interview complete</span><h2>You\'re all set' + (IV.first ? ', ' + esc(IV.first) : '') + '!</h2>' +
-      '<p>Thanks for taking the time. We watch every interview, and if it looks like a fit we\'ll reach out to set up a time to meet in person.</p>' +
+    box().innerHTML = '<span class="ok-badge">Video received</span><h2>You\'re all set' + (IV.first ? ', ' + esc(IV.first) : '') + '!</h2>' +
+      '<p>Your application is complete and under review. We watch every video, and if it looks like a fit we\'ll reach out to set up a time to meet in person.</p>' +
+      '<p>We just emailed you a confirmation. <a href="?a=' + encodeURIComponent(IV.token) + '" style="color:var(--text);font-weight:700">Review your application</a></p>' +
       '<p>In the meantime, check out our work on Instagram: <a href="https://instagram.com/knoxviewmedia" target="_blank" rel="noopener" style="color:var(--text);font-weight:700">@knoxviewmedia</a></p>';
     $('iv').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   window.addEventListener('pagehide', function(){ if (IV.stream) IV.stream.getTracks().forEach(function(t){ t.stop(); }); });
   document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'visible' && $('rs')) wake(true); });
+
+  /* ---------------- review your application: /apply?a=<token> ---------------- */
+  function showReviewPage(t){
+    form.hidden = true; $('intro').hidden = true; $('hero').hidden = true;
+    var b = $('iv'); b.hidden = false; b.classList.add('rv-card');
+    b.innerHTML = '<p class="iv-center">Loading your application…</p>';
+    api('application', { token: t }).then(function(a){
+      var row = function(l, v, full){ return '<div' + (full ? ' class="full"' : '') + '><span class="rv-l">' + l + '</span><span class="rv-v">' + (v || '—') + '</span></div>'; };
+      var d = a.applied_at ? new Date(a.applied_at).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' }) : '';
+      var web = a.website ? '<a href="' + esc(a.website) + '" target="_blank" rel="noopener">' + esc(a.website.replace(/^https?:\/\/(www\.)?/, '')) + '</a>' : '';
+      var res = a.resume_name ? (a.resume_url ? '<a href="' + esc(a.resume_url) + '" target="_blank" rel="noopener">' + esc(a.resume_name) + '</a>' : esc(a.resume_name)) : 'Not included';
+      var A = a.answers || {};
+      b.innerHTML =
+        '<span class="eyebrow">Your application</span>' +
+        '<h2>' + esc(a.title || 'Application') + '</h2>' +
+        '<p class="rv-sub">Submitted ' + esc(d) + ' · ' + (a.video_done ? 'Complete and under review' : 'Waiting on your one-minute video') + '</p>' +
+        '<div class="rv-video">' + (a.video_done
+          ? '<span class="ok-badge">Video received</span><span style="color:var(--soft);font-weight:300">Thanks! Your application is complete and under review.</span>'
+          : '<span style="color:var(--text)">One last step: record your one-minute video.</span><a class="btn" href="?i=' + encodeURIComponent(t) + '">Record my video →</a>') + '</div>' +
+        '<div class="rv-grid">' +
+          row('Name', esc([a.first_name, a.last_name].filter(Boolean).join(' '))) + row('City', esc(a.city)) +
+          row('Email', esc(a.email)) + row('Phone', esc(a.phone)) +
+          row('Resume', res) + row('Website / Instagram', web) +
+        '</div>' +
+        [['why','Why would you be great at this role?'],['availability','What\'s your availability?'],['friends','What would your closest friends or past coworkers say it\'s like to be around you?']]
+          .map(function(q){ return '<div class="rv-ans"><span class="rv-q">' + q[1] + '</span><p>' + esc(A[q[0]] || '—') + '</p></div>'; }).join('') +
+        '<p style="font-size:.85rem;color:var(--mute)">Need to change something? Email <a href="mailto:chris@knoxview.com">chris@knoxview.com</a>.</p>';
+    }).catch(function(err){ b.innerHTML = '<p class="ferr">' + esc(err.message) + '</p><p class="iv-center">Questions? Email <a href="mailto:chris@knoxview.com">chris@knoxview.com</a>.</p>'; });
+    setTimeout(function(){ window.scrollTo(0, 0); }, 30);
+  }
+  var at = new URLSearchParams(location.search).get('a');
+  if (at) showReviewPage(at);
 
   // Returning from the email link: /apply?i=<token>
   var it = new URLSearchParams(location.search).get('i');
