@@ -560,7 +560,7 @@ b[data-odo] .d .strip span{display:block}
               <h3>How hiring works</h3>
               <ol class="ap-steps">
                 <li><span><b>Apply below.</b> About 5 minutes.</span></li>
-                <li><span><b>Short video interview.</b> Answer 3 quick questions on camera, on your own time, from your phone or computer.</span></li>
+                <li><span><b>Short video interview.</b> Answer a few quick questions on camera, on your own time, from your phone or computer.</span></li>
                 <li><span><b>Meet in person.</b> If it looks like a fit, we'll invite you to meet the team.</span></li>
               </ol>
             </div>
@@ -615,9 +615,9 @@ b[data-odo] .d .strip span{display:block}
         <div class="ty" id="apDone" hidden>
           <span class="ok-badge">Application submitted</span>
           <h2>Thank you. <em class="ac">You're in.</em></h2>
-          <p>Next step: a short <b>video interview</b>. You'll answer 3 quick questions on camera, on your own time. It takes about 5 minutes and works on your phone or computer.</p>
+          <p>Next step: a short <b>video interview</b>. You'll answer a few quick questions on camera, on your own time, from your phone or computer.</p>
           <p id="apMail">We also emailed you a link so you can come back to it later. If you don't see it, check your spam folder.</p>
-          <button class="btn fill" id="ivStart" type="button">Start my video interview</button>
+          <a class="btn fill" id="ivStart" href="#" role="button">Start my video interview</a>
         </div>
 
         <!-- video interview -->
@@ -737,15 +737,16 @@ b[data-odo] .d .strip span{display:block}
       return put(r.upload.url, resumeFile.blob, resumeFile.name).then(function(){ return api('resume_done', { token: token, path: r.upload.path, name: resumeFile.name }); })
         .catch(function(){ /* the application still went through; resume can be sent later */ }).then(function(){ return r; });
     }).then(function(r){
-      try { history.replaceState(null, '', location.pathname + '?i=' + encodeURIComponent(token)); } catch (_) {}
+      if (!r.interview_url) { try { history.replaceState(null, '', location.pathname + '?i=' + encodeURIComponent(token)); } catch (_) {} }
       form.hidden = true; $('intro').hidden = true;
-      if (!r.emailed) $('apMail').textContent = 'Bookmark this page so you can come back to the interview later.';
+      if (r.interview_url) { var a = $('ivStart'); a.href = r.interview_url; a.target = '_blank'; a.rel = 'noopener'; a.dataset.ext = '1'; }
+      if (!r.emailed) $('apMail').textContent = r.interview_url ? 'Bookmark this page so you can come back to the interview link later.' : 'Bookmark this page so you can come back to the interview later.';
       $('apDone').hidden = false;
       $('apply').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }).catch(function(err){ showErr(err.message); btn.disabled = false; btn.textContent = 'Submit application'; });
   });
   form.addEventListener('input', function(e){ var f = e.target.closest('.fld'); if (f) f.classList.remove('err'); });
-  $('ivStart').addEventListener('click', function(){ $('apDone').hidden = true; startInterview(token); });
+  $('ivStart').addEventListener('click', function(e){ if (this.dataset.ext) return; e.preventDefault(); $('apDone').hidden = true; startInterview(token); });
 
   /* ---------------- video interview ---------------- */
   var IV = { token:null, qs:[], i:0, stream:null, rec:null, chunks:[], mime:'', blob:null, secs:0, timer:null, fallback:false, busy:false };
