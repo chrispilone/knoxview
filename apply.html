@@ -460,7 +460,7 @@ footer .logo{width:90px;opacity:.75}
     box().innerHTML =
       '<span class="eyebrow">Video interview</span>' +
       '<h2>' + (started ? 'Welcome back' : 'Let\'s meet you') + (IV.first ? ', ' + esc(IV.first) : '') + '!</h2>' +
-      '<p>' + (started ? 'Pick up right where you left off.' : IV.qs.length + ' quick questions, about ' + Math.max(1, Math.round(total / 60)) + ' minutes of talking total. There are no trick questions. We just want to see the real you.') + '</p>' +
+      '<p>' + (started ? 'Pick up right where you left off.' : IV.qs.length + ' quick questions, about ' + Math.max(1, Math.round(total / 60)) + (Math.round(total / 60) > 1 ? ' minutes' : ' minute') + ' of talking total. There are no trick questions. We just want to see the real you.') + '</p>' +
       '<ol class="qlist">' + IV.qs.map(function(q, k){ return '<li class="' + (q.done ? 'done' : '') + '"><b>' + (q.done ? '✓' : k + 1) + '</b><span>' + esc(q.q) + '</span></li>'; }).join('') + '</ol>' +
       '<ul class="tips">' +
         '<li><span>💡</span><span>Face a window or a lamp so we can see you clearly.</span></li>' +
