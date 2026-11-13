@@ -271,7 +271,7 @@ footer .logo{width:90px;opacity:.75}
               <h3>How hiring works</h3>
               <ol class="ap-steps">
                 <li><span><b>Apply below.</b> About 5 minutes.</span></li>
-                <li><span><b>Short video interview.</b> Answer a few quick questions on camera, on your own time, from your phone or computer.</span></li>
+                <li><span><b>One-minute video.</b> Record a quick intro on camera, right from your phone or computer.</span></li>
                 <li><span><b>Meet in person.</b> If it looks like a fit, we'll invite you to meet the team.</span></li>
               </ol>
             </div>
@@ -325,9 +325,9 @@ footer .logo{width:90px;opacity:.75}
         <div class="glass ty" id="apDone" hidden>
           <span class="ok-badge">Application submitted</span>
           <h2>Thank you. You're in.</h2>
-          <p>Last step: a short <b>video interview</b>. Answer 3 quick questions on camera, right here on your phone or computer. It takes about 5 minutes.</p>
+          <p>Last step: a quick <b>one-minute video</b> so we can meet you. Record it right here on your phone or computer. No prep needed.</p>
           <p id="apMail">We also emailed you a link so you can come back to it later. If you don't see it, check your spam folder.</p>
-          <a class="btn" id="ivStart" href="#" role="button">Start my video interview →</a>
+          <a class="btn" id="ivStart" href="#" role="button">Record my one-minute video →</a>
         </div>
 
         
@@ -460,17 +460,17 @@ footer .logo{width:90px;opacity:.75}
     box().innerHTML =
       '<span class="eyebrow">Video interview</span>' +
       '<h2>' + (started ? 'Welcome back' : 'Let\'s meet you') + (IV.first ? ', ' + esc(IV.first) : '') + '!</h2>' +
-      '<p>' + (started ? 'Pick up right where you left off.' : IV.qs.length + ' quick questions, about ' + Math.max(1, Math.round(total / 60)) + (Math.round(total / 60) > 1 ? ' minutes' : ' minute') + ' of talking total. There are no trick questions. We just want to see the real you.') + '</p>' +
-      '<ol class="qlist">' + IV.qs.map(function(q, k){ return '<li class="' + (q.done ? 'done' : '') + '"><b>' + (q.done ? '✓' : k + 1) + '</b><span>' + esc(q.q) + '</span></li>'; }).join('') + '</ol>' +
+      '<p>' + (started ? 'Pick up right where you left off.' : (IV.qs.length === 1 ? 'Just one quick question, and you have up to ' + fmt(total) + ' to answer it.' : IV.qs.length + ' quick questions, about ' + Math.max(1, Math.round(total / 60)) + ' minutes of talking total.') + ' No trick questions. We just want to see the real you.') + '</p>' +
+      '<ol class="qlist">' + IV.qs.map(function(q, k){ return '<li class="' + (q.done ? 'done' : '') + '">' + (IV.qs.length > 1 || q.done ? '<b>' + (q.done ? '✓' : k + 1) + '</b>' : '') + '<span>' + esc(q.q) + '</span></li>'; }).join('') + '</ol>' +
       '<ul class="tips">' +
         '<li><span>💡</span><span>Face a window or a lamp so we can see you clearly.</span></li>' +
         '<li><span>🤫</span><span>Find a quiet spot. Hold your phone at eye level (portrait is perfect).</span></li>' +
-        '<li><span>🔁</span><span>Watch each answer before sending it, and re-record as many times as you like.</span></li>' +
+        '<li><span>🔁</span><span>' + (IV.qs.length > 1 ? 'Watch each answer before sending it, and re-record as many times as you like.' : 'Watch it back before you send it, and re-record as many times as you like.') + '</span></li>' +
       '</ul>' +
       (IN_APP ? '<p class="iv-note">Opened this from Instagram, Facebook or another app? For the smoothest recording, tap <b>•••</b> and choose <b>Open in ' + (IOS ? 'Safari' : 'browser') + '</b>. You can also keep going here.</p>' : '') +
       '<button class="btn" id="ivGo" type="button">' + (started ? 'Continue' : 'I\'m ready') + '</button>' +
       '<p class="ferr" id="ivErr"></p>' +
-      '<p style="font-size:.85rem">Need to stop? Your progress is saved. Use the link in your email to come back anytime.</p>';
+      '<p style="font-size:.85rem">' + (IV.qs.length > 1 ? 'Need to stop? Your progress is saved. Use the link in your email to come back anytime.' : 'Not a good time? Use the link in your email to come back and record it later.') + '</p>';
     $('ivGo').onclick = openRecorder;
   }
 
@@ -515,7 +515,7 @@ footer .logo{width:90px;opacity:.75}
   function header(){
     var q = IV.qs[IV.i];
     $('rsProg').innerHTML = prog();
-    $('rsMeta').textContent = 'Question ' + (IV.i + 1) + ' of ' + IV.qs.length + ' · up to ' + fmt(q.seconds);
+    $('rsMeta').textContent = (IV.qs.length > 1 ? 'Question ' + (IV.i + 1) + ' of ' + IV.qs.length + ' · ' : '') + 'up to ' + fmt(q.seconds);
     $('rsQ').textContent = q.q;
     $('rsErr').textContent = '';
   }
