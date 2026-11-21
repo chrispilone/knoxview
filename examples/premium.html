@@ -543,6 +543,34 @@ body.locked{overflow:hidden}
 .exother{margin-top:22px;font-size:.78rem;color:var(--soft)}
 .exother a{color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px;margin:0 4px}
 @media (max-width:420px){.exnav a{padding:9px 9px;letter-spacing:.06em;font-size:.6rem}}
+/* swipeable phone stack (same as home page reels) */
+.vgrid.has-stack{grid-template-columns:minmax(0,520px) minmax(0,1fr);max-width:1080px}
+.stack{position:relative;width:100%;outline:none;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.stack .vids{display:block;position:relative;aspect-ratio:1/1.08;max-width:520px;margin:0 auto;perspective:1400px}
+.stack .phone{position:absolute;top:2%;left:50%;width:46%;margin-left:-23%;transition:transform .7s cubic-bezier(.22,1,.36,1),filter .7s,opacity .7s;cursor:grab;will-change:transform}
+.stack .phone.pos-0{z-index:3;transform:translateX(0) scale(1)}
+.stack .phone.pos-l{z-index:2;transform:translateX(-62%) scale(.82) rotateY(14deg);filter:brightness(.6) saturate(.8);cursor:pointer}
+.stack .phone.pos-r{z-index:2;transform:translateX(62%) scale(.82) rotateY(-14deg);filter:brightness(.6) saturate(.8);cursor:pointer}
+.stack .phone.pos-far{z-index:1;transform:translateX(0) scale(.7);opacity:0;pointer-events:none}
+.stack .phone.pos-l2{z-index:1;transform:translateX(-95%) scale(.66) rotateY(18deg);opacity:0;pointer-events:none}
+.stack .phone.pos-r2{z-index:1;transform:translateX(95%) scale(.66) rotateY(-18deg);opacity:0;pointer-events:none}
+.stack.drag .phone{transition:none;cursor:grabbing}
+.stack .phone .snd{opacity:0;transform:scale(.85);pointer-events:none;transition:opacity .3s,transform .3s,background .2s}
+.stack .phone.pos-0 .snd{opacity:1;transform:none;pointer-events:auto}
+.stack .side{position:absolute;top:calc(50% - 22px);z-index:6;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(231,237,246,.55);background:rgba(29,50,80,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 20px -8px rgba(0,0,0,.6);transition:background .2s,border-color .2s}
+.stack .side:hover{background:rgba(29,50,80,1);border-color:#fff}
+.stack .side svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.stack .side.l{left:0}.stack .side.r{right:0}
+.stack .side:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.stack-nav{position:relative;z-index:6;display:flex;justify-content:center;margin-top:18px}
+.dots{display:flex;gap:8px}
+.dots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:rgba(29,50,80,.22);cursor:pointer;transition:width .3s,background .3s}
+.dots button[aria-current="true"]{width:24px;background:var(--slate)}
+.stack:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:12px}
+#video{overflow-x:clip}
+@media (prefers-reduced-motion:reduce){.stack .phone{transition:none}}
+@media (max-width:900px){.vgrid.has-stack{grid-template-columns:1fr}}
+@media (max-width:600px){.stack .vids{aspect-ratio:1/1.2}.stack .phone{width:54%;margin-left:-27%}.stack .phone.pos-l{transform:translateX(-52%) scale(.8) rotateY(14deg)}.stack .phone.pos-r{transform:translateX(52%) scale(.8) rotateY(-14deg)}.stack .side{width:40px;height:40px}}
 </style>
 </head>
 <body>
@@ -604,15 +632,23 @@ body.locked{overflow:hidden}
   </section>
 
   <section class="lt first" id="video">
-    <div class="wrap vgrid">
-      <div class="phone-wrap rv">
-        <div class="phone" id="reel" data-vid="1216825550"><div class="bezel"><div class="screen" style="background-image:url('/img/examples/premium/reel-poster.jpg')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+    <div class="wrap vgrid has-stack">
+      <div class="stack rv" id="stack" role="region" aria-roledescription="carousel" aria-label="Premium package videos" tabindex="0">
+        <div class="vids">
+          <div class="phone" data-vid="1216825550" data-title="Premium package agent listing video"><div class="bezel"><div class="screen" style="background-image:url('/img/examples/premium/reel-poster.jpg')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+          <div class="phone" data-vid="1213245483" data-title="9409 Johnson Rd listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2183862926-a497c6924a052003477097d511ba4a67a53ac5005c3f12e9fff575e33f49b661-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+          <div class="phone" data-vid="1209845861" data-title="175 Morganton Cove listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2179558502-44c3ffd9144f94e36e2457604688fc5eec886e92dc46911c8c93e0aa0d4f0004-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+          <div class="phone" data-vid="1194736595" data-title="1319 Licklog Hollow Road listing reel"><div class="bezel"><div class="screen" style="background-image:url('https://i.vimeocdn.com/video/2160460080-1b2faa8b9fcc0f880876bf62a438c5bb442055311a526d6bcd9b012b1afb8f34-d_540x960?region=us')"></div></div><span class="island" aria-hidden="true"></span><button type="button" class="snd" aria-label="Turn sound on" aria-pressed="false"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button></div>
+        </div>
+        <button type="button" class="side l" id="stPrev" aria-label="Previous video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="side r" id="stNext" aria-label="Next video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="stack-nav"><div class="dots" id="stDots"></div></div>
       </div>
       <div class="vcopy rv">
         <span class="eyebrow">Premium video</span>
         <h2>Your listing, <em class="ac">your story</em></h2>
         <p class="one">Cinematic storytelling built for you and your brand. Delivered branded and unbranded.</p>
-        <p class="tip">Tap the speaker to turn the sound on.</p>
+        <p class="tip">Swipe or use the arrows to see more. Tap the speaker to turn the sound on.</p>
       </div>
     </div>
   </section>
@@ -782,22 +818,54 @@ body.locked{overflow:hidden}
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 (function(){
-  /* premium video in the phone */
-  var ph=document.getElementById('reel');if(!ph)return;
-  var btn=ph.querySelector('.snd'),pl=null,f=null,on=false;
-  function load(){
-    if(f)return;f=document.createElement('iframe');
-    f.src='https://player.vimeo.com/video/'+ph.getAttribute('data-vid')+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1&texttrack=false&cc=0';
-    f.title='Premium package agent listing video';f.tabIndex=-1;f.setAttribute('allow','autoplay; picture-in-picture');
-    ph.querySelector('.screen').appendChild(f);
-    if(window.Vimeo){pl=new Vimeo.Player(f);pl.on('play',function(){f.classList.add('ready')});pl.ready().then(function(){setTimeout(function(){f.classList.add('ready')},300)}).catch(function(){})}
+  var st=document.getElementById('stack');if(!st)return;
+  var ph=[].slice.call(st.querySelectorAll('.phone')),n=ph.length,cur=0,sound=false,players={};
+  var dotsBox=document.getElementById('stDots');
+  dotsBox.innerHTML=ph.map(function(p,i){return '<button type="button" aria-label="Reel '+(i+1)+' of '+n+'"></button>'}).join('');
+  var dots=[].slice.call(dotsBox.children);
+  function src(id){return 'https://player.vimeo.com/video/'+id+'?autoplay=1&muted=1&loop=1&controls=0&autopause=0&playsinline=1&title=0&byline=0&portrait=0&dnt=1&texttrack=false&cc=0'}
+  function ensure(p){
+    var id=p.getAttribute('data-vid');if(players[id])return players[id];
+    var f=document.createElement('iframe');f.src=src(id);f.title=p.getAttribute('data-title');f.tabIndex=-1;f.setAttribute('allow','autoplay; picture-in-picture');
+    p.querySelector('.screen').appendChild(f);
+    var pl=window.Vimeo?new Vimeo.Player(f):null;
+    if(pl){pl.on('play',function(){f.classList.add('ready')});pl.ready().then(function(){setTimeout(function(){f.classList.add('ready')},300)}).catch(function(){})}
     else setTimeout(function(){f.classList.add('ready')},1500);
+    players[id]={f:f,p:pl};return players[id];
   }
-  btn.addEventListener('click',function(){load();on=!on;btn.setAttribute('aria-pressed',on);btn.setAttribute('aria-label',on?'Turn sound off':'Turn sound on');
-    if(pl){if(on){pl.setVolume(1).catch(function(){});pl.setMuted(false).catch(function(){});pl.play().catch(function(){})}else pl.setMuted(true).catch(function(){})}});
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load();if(pl)pl.play().catch(function(){})}else if(pl)pl.pause().catch(function(){})})},{rootMargin:'200px'});io.observe(ph);
-  }else load();
+  function audio(){
+    ph.forEach(function(p,k){var o=players[p.getAttribute('data-vid')];var on=sound&&k===cur;
+      var b=p.querySelector('.snd');b.setAttribute('aria-pressed',on?'true':'false');b.setAttribute('aria-label',on?'Turn sound off':'Turn sound on');
+      if(o&&o.p){if(on){o.p.setVolume(1).catch(function(){});o.p.setMuted(false).catch(function(){})}else{o.p.setMuted(true).catch(function(){})}}});
+  }
+  function set(i){
+    cur=(i%n+n)%n;
+    ph.forEach(function(p,k){var d=(k-cur+n)%n,c=d===0?'pos-0':d===1?'pos-r':d===n-1?'pos-l':d===2?'pos-r2':d===n-2?'pos-l2':'pos-far';
+      p.classList.remove('pos-0','pos-l','pos-r','pos-l2','pos-r2','pos-far');p.classList.add(c);p.setAttribute('aria-hidden',d===0?'false':'true');
+      var vis=c==='pos-0'||c==='pos-l'||c==='pos-r';
+      if(vis&&started){var o=ensure(p);if(o.p)o.p.play().catch(function(){})}
+      else{var o2=players[p.getAttribute('data-vid')];if(o2&&o2.p)o2.p.pause().catch(function(){})}});
+    dots.forEach(function(b,k){b.setAttribute('aria-current',k===cur?'true':'false')});
+    audio();
+  }
+  ph.forEach(function(p){p.querySelector('.snd').addEventListener('click',function(e){e.stopPropagation();sound=!(sound&&p.classList.contains('pos-0'));audio()})});
+  document.getElementById('stPrev').addEventListener('click',function(){set(cur-1)});
+  document.getElementById('stNext').addEventListener('click',function(){set(cur+1)});
+  dots.forEach(function(b,k){b.addEventListener('click',function(){set(k)})});
+  st.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();set(cur-1)}if(e.key==='ArrowRight'){e.preventDefault();set(cur+1)}});
+  var sx=null,dx=0,moved=false;
+  st.querySelector('.vids').addEventListener('pointerdown',function(e){if(e.button||e.target.closest('.snd'))return;sx=e.clientX;dx=0;moved=false});
+  window.addEventListener('pointermove',function(e){if(sx===null)return;dx=e.clientX-sx;if(Math.abs(dx)>8){moved=true;st.classList.add('drag')}});
+  window.addEventListener('pointerup',function(e){if(sx===null)return;st.classList.remove('drag');
+    if(moved&&Math.abs(dx)>40)set(dx<0?cur+1:cur-1);
+    else if(!moved){var p=e.target.closest&&e.target.closest('.phone');if(p&&!p.classList.contains('pos-0'))set(ph.indexOf(p))}
+    sx=null});
+  window.addEventListener('pointercancel',function(){sx=null;st.classList.remove('drag')});
+  // start videos only when the carousel scrolls near the screen
+  var started=false;
+  function start(){if(started)return;started=true;set(cur)}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){start();io.disconnect()}},{rootMargin:'300px'});io.observe(st)}else start();
+  set(0);
 })();
 </script>
 <script>
