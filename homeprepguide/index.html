@@ -245,6 +245,16 @@
     }
     requestAnimationFrame(frame);
   }
+
+  var saved = load();
+  boxes.forEach(function(b, i){
+    b.checked = !!saved[i];
+    b.addEventListener('change', function(){ save(); update(); });
+  });
+  document.getElementById('reset').addEventListener('click', function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    save(); update();
+  });
   update();
 })();
 </script>
