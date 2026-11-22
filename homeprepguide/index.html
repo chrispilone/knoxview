@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Home Prep Guide · Knox View Real Estate Media</title>
+<meta name="description" content="A simple room-by-room photo prep checklist for sellers and agents from Knox View Real Estate Media.">
+<meta name="theme-color" content="#1d3250">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://knoxview.com/homeprepguide">
+<meta property="og:title" content="Home Prep Guide">
+<meta property="og:site_name" content="Knox View Real Estate Media">
+<meta property="og:description" content="A simple room-by-room photo prep checklist from Knox View Real Estate Media.">
+<meta property="og:image" content="https://knoxview.com/homeprepguide/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Four clean, bright interior rooms">
+<meta property="og:url" content="https://knoxview.com/homeprepguide">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Home Prep Guide">
+<meta name="twitter:image" content="https://knoxview.com/homeprepguide/preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1d3250; --navy-2:#2a4670; --ink:#1b2430; --muted:#5d6b7c;
+    --line:#e3e8ef; --bg:#f6f8fb; --card:#ffffff; --done:#2f7d5b;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  em{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.08em}
+  .hero{
+    background:linear-gradient(180deg,rgba(38,42,50,.55) 0%,rgba(38,42,50,.62) 60%,rgba(29,50,80,.78) 100%),
+      url("/homeprepguide/hero.jpg") center/cover no-repeat, var(--navy);
+    color:#fff; padding:72px 20px 92px; text-align:center;
+  }
+  h1{
+    font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:.01em;
+    font-size:clamp(40px,10.5vw,76px);white-space:nowrap;line-height:1;margin:0 0 16px;
+    text-shadow:0 2px 18px rgba(0,0,0,.35);
+  }
+  h1 em{font-family:inherit;font-weight:500;color:#cfe0f7}
+  .intro{max-width:520px;margin:0 auto;opacity:.95;font-size:17px;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+  .pdf{
+    display:inline-block;margin-top:22px;padding:11px 20px;border-radius:999px;
+    background:#fff;color:var(--navy);font-weight:600;text-decoration:none;font-size:15px;
+  }
+  main{max-width:640px;margin:-36px auto 0;padding:0 16px 40px}
+  .progress-card{
+    background:var(--card);border-radius:16px;padding:18px 20px;
+    box-shadow:0 6px 24px rgba(29,50,80,.10);position:sticky;top:10px;z-index:5;
+  }
+  .progress-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .progress-card h2{margin:0;font-size:20px}
+  .count{color:var(--muted);font-size:14px;margin-top:2px}
+  .reset{
+    border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;
+    padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;
+  }
+  .bar{height:8px;background:var(--line);border-radius:99px;margin-top:14px;overflow:hidden}
+  .bar span{display:block;height:100%;width:0;background:var(--done);border-radius:99px;transition:width .25s ease}
+  section{background:var(--card);border-radius:16px;margin-top:16px;padding:6px 20px 10px;border:1px solid var(--line)}
+  section h3{font-size:17px;margin:14px 0 4px;color:var(--navy)}
+  label{
+    display:flex;gap:14px;align-items:flex-start;padding:13px 0;
+    border-top:1px solid var(--line);cursor:pointer;font-size:16px;
+  }
+  section h3 + label{border-top:none}
+  input[type=checkbox]{
+    appearance:none;-webkit-appearance:none;flex:0 0 24px;width:24px;height:24px;margin:0;
+    border:2px solid #b8c3d1;border-radius:7px;display:grid;place-content:center;background:#fff;
+  }
+  input[type=checkbox]::after{
+    content:"";width:12px;height:7px;border-left:3px solid #fff;border-bottom:3px solid #fff;
+    transform:rotate(-45deg) translate(1px,-1px);opacity:0;
+  }
+  input[type=checkbox]:checked{background:var(--done);border-color:var(--done)}
+  input[type=checkbox]:checked::after{opacity:1}
+  input[type=checkbox]:checked + span{color:var(--muted);text-decoration:line-through}
+  .tip{
+    margin-top:16px;background:#eef3f9;border-left:4px solid var(--navy);
+    border-radius:12px;padding:16px 18px;font-size:16px;
+  }
+  .complete{display:none;margin-top:16px;text-align:center;color:var(--done);font-weight:700}
+  .complete.show{display:block}
+  footer{text-align:center;padding:12px 16px 40px}
+  .foot-logo{display:block;margin:6px auto 0;width:88px;height:auto;opacity:.85}
+  @media print{
+    .hero{background:none;color:var(--ink);padding:10px}
+    .pdf,.reset,.bar{display:none}
+    .progress-card{position:static;box-shadow:none}
+    main{margin-top:0}
+  }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Home Prep <em>Guide</em></h1>
+    <p class="intro">A simple room-by-room guide for sellers and agents. A little prep goes a long way in the final photos.</p>
+    <a class="pdf" href="https://knoxview.com/resources/Knox-View-Photo-Prep-Checklist.pdf" target="_blank" rel="noopener">Download PDF</a>
+  </header>
+
+  <main>
+    <div class="progress-card">
+      <div class="progress-top">
+        <div>
+          <h2>Check it off <em>as you go</em></h2>
+          <div class="count" id="count">0 of 18 done</div>
+        </div>
+        <button class="reset" id="reset" type="button">Reset</button>
+      </div>
+      <div class="bar"><span id="bar"></span></div>
+    </div>
+
+    <section>
+      <h3>Whole home</h3>
+      <label><input type="checkbox"><span>Turn on every light, open the blinds and turn off fans and TVs.</span></label>
+      <label><input type="checkbox"><span>Clear away clutter, personal items and valuables.</span></label>
+      <label><input type="checkbox"><span>Have pets out or secured, and make sure we can get in.</span></label>
+    </section>
+
+    <section>
+      <h3>Kitchen &amp; dining</h3>
+      <label><input type="checkbox"><span>Clear the counters, leaving just a few nice pieces.</span></label>
+      <label><input type="checkbox"><span>Empty the sink and put away towels, sponges and soap.</span></label>
+      <label><input type="checkbox"><span>Clear the front of the fridge and hide the trash can.</span></label>
+    </section>
+
+    <section>
+      <h3>Bathrooms</h3>
+      <label><input type="checkbox"><span>Put away toiletries, razors and shower products.</span></label>
+      <label><input type="checkbox"><span>Hang fresh, matching towels and close the toilet lid.</span></label>
+      <label><input type="checkbox"><span>Hide the trash can, bath mats and cleaning supplies.</span></label>
+    </section>
+
+    <section>
+      <h3>Living areas</h3>
+      <label><input type="checkbox"><span>Fluff the pillows and straighten furniture and rugs.</span></label>
+      <label><input type="checkbox"><span>Clear coffee tables of remotes, chargers and mail.</span></label>
+      <label><input type="checkbox"><span>Put away pet beds, toys and loose cords.</span></label>
+    </section>
+
+    <section>
+      <h3>Bedrooms</h3>
+      <label><input type="checkbox"><span>Make every bed.</span></label>
+      <label><input type="checkbox"><span>Clear off nightstands and dressers.</span></label>
+      <label><input type="checkbox"><span>Put away clothes, shoes and laundry baskets.</span></label>
+    </section>
+
+    <section>
+      <h3>Exterior</h3>
+      <label><input type="checkbox"><span>Move cars out of the driveway and away from the house.</span></label>
+      <label><input type="checkbox"><span>Put away trash bins, hoses and yard tools.</span></label>
+      <label><input type="checkbox"><span>Mow, sweep the porch and turn on outdoor lights.</span></label>
+    </section>
+
+    <div class="tip"><strong>Final walk-through:</strong> if you wouldn't want it in your listing photos, put it away.</div>
+    <div class="complete" id="complete">All set — you're ready for your shoot!</div>
+  </main>
+
+  <footer>
+    <img class="foot-logo" src="/homeprepguide/logo.png" alt="Knox View Real Estate Media" width="88" height="40">
+  </footer>
+
+<script>
+(function(){
+  var KEY = 'kv-prep-checklist-v1';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('input[type=checkbox]'));
+  var total = boxes.length;
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ return []; } }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(boxes.map(function(b){return b.checked;}))); } catch(e){} }
+  function update(){
+    var done = boxes.filter(function(b){return b.checked;}).length;
+    document.getElementById('count').textContent = done + ' of ' + total + ' done';
+    document.getElementById('bar').style.width = (done / total * 100) + '%';
+    document.getElementById('complete').classList.toggle('show', done === total);
+  }
+  var saved = load();
+  boxes.forEach(function(b, i){
+    b.checked = !!saved[i];
+    b.addEventListener('change', function(){ save(); update(); });
+  });
+  document.getElementById('reset').addEventListener('click', function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    save(); update();
+  });
+  update();
+})();
+</script>
+</body>
+</html>
